@@ -89,7 +89,8 @@ Router.route('/', {
       const patch = routeData.patch ? routeData.patch.version : 'unknown';
       return `League of Legends item sets generator (patch ${patch})`;
     }
-  }
+  },
+  fastRender: true
 });
 
 Router.route('/reviews', {
@@ -102,7 +103,8 @@ Router.route('/reviews', {
     title: function () {
       return `Users reviews | ${title}`;
     }
-  }
+  },
+  fastRender: true
 });
 Router.route('/reviews/add', {
   layoutTemplate: 'MasterLayout',
@@ -114,7 +116,8 @@ Router.route('/reviews/add', {
     title: function () {
       return `Add a review | ${title}`;
     }
-  }
+  },
+  fastRender: true
 });
 
 Router.route('/sets', {
@@ -136,7 +139,8 @@ Router.route('/sets', {
     title: function () {
       return `Custom sets | ${title}`;
     }
-  }
+  },
+  fastRender: true
 });
 Router.route('/sets/:_id', {
   layoutTemplate: 'MasterLayout',
@@ -166,7 +170,8 @@ Router.route('/sets/:_id', {
       const setsId = itemSets ? itemSets.id : 'error';
       return `Items sets #${setsId} | ${title}`;
     }
-  }
+  },
+  fastRender: true
 });
 Router.route('/sets/:_id/:_number', {
   layoutTemplate: 'MasterLayout',
@@ -211,7 +216,8 @@ Router.route('/sets/:_id/:_number', {
       const itemSet = build.itemSet;
       return `${itemSet.champion} - ${itemSet.role} (${itemSets.patchVersion}) #${build.id}/${build.number} | ${title}`;
     }
-  }
+  },
+  fastRender: true
 });
 
 Router.route('/api/patch', function () {
