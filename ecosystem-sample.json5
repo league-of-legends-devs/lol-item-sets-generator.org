@@ -17,7 +17,9 @@
       },
       "args": ["--release"],
       "port": 9000,
-      "watch": false
+      "watch": false,
+      "instances": 0,
+      "exec_mode": "cluster"
     }
 
   ]
