@@ -1,0 +1,133 @@
+<template name="Home">
+  <div class="{{styles.home}}">
+    <section class="{{styles.resume}} row">
+      <div class="{{styles.description}} text-center col-md-8 col-sm-8">
+        <h2>Download the best -generated- League of Legends recommended items.</h2>
+        <h4>The builds are generated every patch from Plat+ 5v5 ranked games (solo and team).</h4>
+        <a id="guestbook" href="{{pathFor route='Guestbook'}}">Users reviews</a>
+      </div>
+      <div class="announcements col-md-4 col-sm-4 hidden-xs">
+        <div>
+          {{> Announcements}}
+        </div>
+        <!-- <div class="text-center">
+          <a href="https://twitter.com/LoL_item_sets" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @LoL_item_sets</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div> -->
+      </div>
+    </section>
+
+    <div class="clearfix"></div>
+
+    <section class="{{styles.browse_sets}} text-center text-uppercase">
+      <a href="{{pathFor route='Sets'}}">
+        <span>See the item sets</span>
+      </a>
+    </section>
+
+    <section class="{{styles.download}} text-center row">
+      <div class="{{styles.downloadSection}} col-md-4 col-sm-12">
+        <button id="getItemSets" type="button" class="{{styles.download_button}} btn btn-lg btn-warning col-lg-12 col-md-12 col-sm-12"><i class="fa fa-download" aria-hidden="true"></i> Download the sets</button>
+        <div class="clearfix"></div>
+        <p>(.zip file)</p>
+        <div>
+          <h4>{{sets_downloads}} downloads</h4> <!-- since March 20th 2015 -->
+          <p>The archive contains <b>.json</b> files. These files are used by the LoL client when showing the recommended builds in the game shop. No danger <b>;-)</b></p>
+        </div>
+        <div>
+          <h3>How to import my item sets ?</h3>
+          <p>On Windows : copy/paste the content of the "ItemSets" folder in this directory and merge the folders :</p>
+          <p class="{{styles.itemSetsPath}} well">C:\Riot Games\League of Legends\Config\Champions</p>
+        </div>
+      </div>
+      <div class="{{styles.downloadSection}} col-md-4 col-sm-6">
+        <button id="getWindowsApplication" type="button" class="{{styles.download_button}} btn btn-lg btn-warning col-lg-12 col-md-12 col-sm-12"><i class="fa fa-windows" aria-hidden="true"></i> Windows application</button>
+        <div class="clearfix"></div>
+        <p>(.exe in a .zip file, <b>run as admin !</b>)</p>
+        <div class="{{styles.downloadSection_app}} col-sm-12 col-xs-6">
+          <h4>{{windows_app_downloads}} downloads</h4> <!-- since May 21th 2015 -->
+          <p>Version <b>{{windows_app_version}}</b>. <a href="https://github.com/Ilshidur/LoL-item-sets">GitHub repository</a></p>
+          <p>Submit bugs <a href="https://github.com/Ilshidur/LoL-item-sets/issues/new">here</a>.</p>
+        </div>
+        <div class="col-sm-12 col-xs-6">
+          <img class="{{styles.app_preview}} img-responsive img-thumbnail img-center center-block" src="https://raw.githubusercontent.com/Ilshidur/LoL-item-sets/master/preview.png" alt="Application preview"/>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="{{styles.downloadSection}} col-md-4 col-sm-6">
+        <button id="getMacApplication" type="button" class="{{styles.download_button}} btn btn-lg btn-warning col-lg-12 col-md-12 col-sm-12"><i class="fa fa-apple" aria-hidden="true"></i> Mac application</button>
+        <div class="clearfix"></div>
+        <p>(.zip file)</p>
+        <div class="{{styles.downloadSection_app}} col-sm-12 col-xs-6">
+          <h4>{{mac_app_downloads}} downloads</h4> <!-- since May 21th 2015 -->
+          <p>Version <b>{{mac_app_version}}</b>. <a href="https://github.com/Ilshidur/LoL-item-sets-Mac">GitHub repository</a></p>
+          <p>Submit bugs <a href="https://github.com/Ilshidur/LoL-item-sets-Mac/issues/new">here</a>.</p>
+        </div>
+        <div class="col-sm-12 col-xs-6">
+          <img src="https://raw.githubusercontent.com/Ilshidur/LoL-item-sets-Mac/master/preview.png" alt="Application preview" class="{{styles.app_preview}} img-responsive img-thumbnail img-center center-block"/>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </section>
+
+    <div class="clearfix"></div>
+
+    <section class="{{styles.preview}} text-center">
+      <h1>How does it looks like ?</h1>
+      <h4>You can see the item sets as recommended items in the game shop :</h4>
+      <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-0 col-sm-10 col-sm-offset-0">
+        <img itemprop="screenshot" src="img/preview.png" alt="Item sets generator preview" class="{{styles.previewImage}} img-responsive img-thumbnail img-center center-block"/>
+      </div>
+      <div class="col-md-2 col-sm-2 col-xs-2">
+        <script type="text/javascript">
+          google_ad_client = "ca-pub-3046831943757364";
+          google_ad_slot = "6117787933";
+          google_ad_width = 120;
+          google_ad_height = 600;
+        </script>
+        <script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+      </div>
+    </section>
+
+    <div class="clearfix"></div>
+    <hr/>
+
+    <section id="faq" class="{{styles.faq}} col-md-10 col-md-offset-1">
+      <h2>
+        Would I be banned if I use these item sets or the application ?
+      </h2>
+      <h4>
+        <b>NO</b>, you will never be banned for using these custom item sets.<br/>
+        This program only downloads the sets and copies them to your League of Legends folder like a human would do.
+        This project is open source : if you have doubts about it, you can check the source code on <a href="https://github.com/Ilshidur/LoL-item-sets">GitHub</a>.
+        This program will never modify your League of Legends installation : only the item sets.<br/>
+        Riot is totally OK with making your own item sets because they provided an <a href="https://developer.riotgames.com/docs/item-sets">item sets API doc</a>.
+      </h4>
+      <h2>
+        Why <i>LoL item sets generator</i> instead of <i><a href="https://github.com/dustinblackman/Championify">Championify</a></i> ?
+      </h2>
+      <h4>
+        <i>LoL item sets generator</i> is <b>faster</b> (it downloads the generated sets, <i>Championify</i> generates the sets each time), <b>lighter</b> (~1.07Mo against ~102Mo) and <b>auto updates the sets</b>. One the other hand, <i>Championify</i> supports ARAM item sets.
+      </h4>
+    </section>
+
+    <div class="clearfix"></div>
+    <hr/>
+
+    <section class="text-center">
+      <h3>Total amount of every downloads : {{totalDownloads}}</h3>
+    </section>
+
+    <!-- <section id="newsfeed">
+      {{> Newsfeed}}
+    </section> -->
+    <!-- <hr/> -->
+    <!-- <section id="partners">
+      <h2>Partners and affiliations</h2>
+      <div id="ad1">
+
+      </div>
+      {{> Partners}}
+    </section> -->
+  </div>
+</template>

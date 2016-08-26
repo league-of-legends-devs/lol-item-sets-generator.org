@@ -1,0 +1,32 @@
+{
+  "name": "lol-item-sets-generator.org",
+  "version": "1.0.0",
+  "description": "https://lol-item-sets-generator.org",
+  "dependencies": {
+    "prerender-node": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.1.0",
+    "eslint": "^3.0.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-import-resolver-meteor": "^0.2.4",
+    "eslint-plugin-import": "^1.10.1",
+    "eslint-plugin-meteor": "^3.6.0"
+  },
+  "scripts": {
+    "start": "iron",
+    "build:dev": "METEOR_SETTINGS=$(cat config/development/settings.json) iron build",
+    "build:prod": "METEOR_SETTINGS=$(cat config/production/settings.json) iron build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@5.196.66.83:ilshidur/lol-item-sets-generator.org.git"
+  },
+  "author": "Ilshidur <ilshidur@gmail.com> (https://www.nicolas-coutin.fr)",
+  "license": "ISC",
+  "bugs": {
+    "url": "http://5.196.66.83/gogs/ilshidur/lol-item-sets-generator.org/issues"
+  },
+  "homepage": "http://5.196.66.83/gogs/ilshidur/lol-item-sets-generator.org#readme"
+}

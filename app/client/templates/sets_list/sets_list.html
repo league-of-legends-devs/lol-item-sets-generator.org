@@ -1,0 +1,28 @@
+<template name="SetsList">
+  <div class="{{styles.sets_list}}">
+    <div>
+      {{#if shownItemSets}}
+        {{#let sets=shownItemSets}}
+          <div class="container-fluid">
+            <p class="text-center"><b>{{sets.patchVersion}}</b> - generated at {{> FormatedDate value=sets.generationDate}}</p>
+            <div class="row">
+              {{#each itemSet in sets.sets}}
+                <div class="{{styles.itemSet}} col-lg-1 col-md-1 col-sm-2 col-xs-2">
+                  <a href="{{pathFor route='Build' _id=(getIdFromObjectId sets._id) _number=(getSetNumberFromIndex @index)}}" class="{{styles.itemSetLink}}">
+                    <p class="{{styles.itemSetRole}}">{{itemSet.role}}</p>
+                    <img src="{{championImage sets.patchVersion itemSet.champion}}" alt="{{itemSet.champion}}" class="{{styles.champImage}} img-responsive img-center center-block">
+                  </a>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        {{/let}}
+      {{else}}
+        <!-- <div>
+          <p class="{{styles.loadingText}} text-center">Loading ...</p>
+        </div> -->
+        {{> Redirect}}
+      {{/if}}
+    </div>
+  </div>
+</template>

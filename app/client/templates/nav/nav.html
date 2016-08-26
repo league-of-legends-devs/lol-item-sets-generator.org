@@ -1,0 +1,16 @@
+<template name="Nav">
+  <div class="nav">
+    <nav>
+      <ul class="nav navbar-nav">
+        <li><a href="{{pathFor route='Home'}}">Home</a></li>
+        {{#each this}}
+          {{#if this._id}}
+            <li><a href="{{pathFor route=route _id=this._id}}">{{name}}</a></li>
+          {{else}}
+            <li><a href="{{pathFor route=route}}">{{name}}</a></li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </nav>
+  </div>
+</template>

@@ -1,0 +1,16 @@
+<template name="GuestbookAddStatus">
+  <div class="guestbook-add-status">
+    {{#if status}}
+    <div class="{{styles.status}}">
+      <div class="alert alert-{{cssStatus}}">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{#if status.err}}
+        <p>Error : {{status.err}}</p>
+        {{else}}
+        <p>{{status.msg}}</p>
+        {{/if}}
+      </div>
+    </div>
+    {{/if}}
+  </div>
+</template>

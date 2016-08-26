@@ -1,0 +1,294 @@
+const title = 'LoL item sets generator';
+const description = 'Download the best -generated- League of Legends recommended items.';
+
+if (Meteor.isClient) {
+  Router.plugin('seo', {
+    title: title,
+    suffix: '',
+    separator: '|',
+
+    description: description,
+    image: 'img/icon.png',
+
+    meta: {
+      keywords: [
+        'lol',
+        'league of legends',
+        'item sets',
+        'builds',
+        'items',
+        'recommended items',
+        'generator',
+        'builder',
+        'ilshidur'
+      ]
+    },
+
+    twitter: {
+      card: description,
+      creator: '@LoL_item_sets'
+      // etc ...
+    },
+
+    og: {
+      site_name: title,
+      image: 'img/icon.png'
+      // etc ...
+    }
+  });
+}
+
+Router.configure({
+  layoutTemplate: 'MasterLayout',
+  notFoundTemplate: 'NotFound',
+  loadingTemplate: 'loading'
+});
+
+Router.route('/', {
+  layoutTemplate: 'MasterLayout',
+  name: 'Home',
+  template: 'Home',
+  controller: 'HomeController',
+  where: 'client',
+  data: function () {
+    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : 1 }, limit: 1 });
+    let patch = lastItemSetGeneration ? lastItemSetGeneration.patchVersion : 'unknown';
+    if (!patch) {
+      patch = {
+        version: 'unknown'
+      };
+    }
+    const downloadsSources = ['sets-from-website', 'windows-app-from-website', 'mac-app-from-website'];
+    let downloads = {};
+    for (let source of downloadsSources) {
+      downloads[source] = Downloads.findOne({ type: source }) || {};
+    }
+    const versionsSources = ['windows-app', 'mac-app'];
+    let versions = {};
+    for (let source of versionsSources) {
+      versions[source] = Versions.findOne({ type: source }) || {};
+    }
+    let total = 0;
+    const allDownloads = Downloads.find().fetch();
+    for (let download of allDownloads) {
+      total += download.count;
+    }
+    const routeData = Session.get('routeData') || {};
+    routeData.home = {
+      version: patch,
+      downloads: downloads,
+      versions: versions,
+      totalDownloads: total
+    };
+    Session.set('routeData', routeData);
+    return routeData;
+  },
+  seo: {
+    title: function () {
+      const routeData = Session.get('routeData') || {};
+      const patch = routeData.patch ? routeData.patch.version : 'unknown';
+      return `League of Legends item sets generator (patch ${patch})`;
+    }
+  }
+});
+
+Router.route('/reviews', {
+  layoutTemplate: 'MasterLayout',
+  name: 'Guestbook',
+  template: 'Guestbook',
+  controller: 'GuestbookController',
+  where: 'client',
+  seo: {
+    title: function () {
+      return `Users reviews | ${title}`;
+    }
+  }
+});
+Router.route('/reviews/add', {
+  layoutTemplate: 'MasterLayout',
+  name: 'Guestbook_Add',
+  template: 'Guestbook_Add',
+  controller: 'GuestbookController',
+  where: 'client',
+  seo: {
+    title: function () {
+      return `Add a review | ${title}`;
+    }
+  }
+});
+
+Router.route('/sets', {
+  layoutTemplate: 'MasterLayout',
+  name: 'Sets',
+  template: 'Sets',
+  where: 'client',
+  data: function () {
+    let routeData = Session.get('routeData') || {};
+    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : 1 }, limit: 1 });;
+    routeData.itemSets = {
+      id: this.params._id,
+      sets: lastItemSetGeneration
+    };
+    Session.set('routeData', routeData);
+    return routeData;
+  },
+  seo: {
+    title: function () {
+      return `Custom sets | ${title}`;
+    }
+  }
+});
+Router.route('/sets/:_id', {
+  layoutTemplate: 'MasterLayout',
+  name: 'SetsId',
+  template: 'Sets',
+  controller: 'SetsController',
+  where: 'client',
+  data: function () {
+    let routeData = Session.get('routeData') || {};
+    let lastItemSetGeneration;
+    if (!this.params._id) {
+      lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : 1 }, limit: 1 });
+    } else {
+      lastItemSetGeneration = ItemSets.findOne(new Meteor.Collection.ObjectID(this.params._id));
+    }
+    routeData.itemSets = {
+      id: this.params._id,
+      sets: lastItemSetGeneration
+    };
+    Session.set('routeData', routeData);
+    return routeData;
+  },
+  seo: {
+    title: function () {
+      const routeData = Session.get('routeData') || {};
+      const itemSets = routeData ? routeData.itemSets : undefined;
+      const setsId = itemSets ? itemSets.id : 'error';
+      return `Items sets #${setsId} | ${title}`;
+    }
+  }
+});
+Router.route('/sets/:_id/:_number', {
+  layoutTemplate: 'MasterLayout',
+  name: 'Build',
+  template: 'Build',
+  controller: 'BuildController',
+  where: 'client',
+  data: function () {
+    if (!this.params._id || !this.params._number) {
+      this.render('Redirect');
+      return;
+    }
+    let routeData = Session.get('routeData') || {};
+    const itemSets = ItemSets.findOne(new Meteor.Collection.ObjectID(this.params._id));
+    if (!itemSets) {
+      this.render('Redirect');
+      return;
+    }
+    const itemSet = itemSets.sets[this.params._number - 1];
+    if (!itemSet) {
+      this.render('Redirect');
+      return;
+    }
+    routeData.build = {
+      id: this.params._id,
+      number: this.params._number,
+      itemSets: itemSets,
+      itemSet: itemSet
+    };
+    Session.set('routeData', routeData);
+    return routeData;
+  },
+  seo: {
+    title: function () {
+      const errorTitle = title;
+      const routeData = Session.get('routeData') || {};
+      const build = routeData.build;
+      if (!build) {
+        return errorTitle;
+      }
+      const itemSets = build.itemSets;
+      const itemSet = build.itemSet;
+      return `${itemSet.champion} - ${itemSet.role} (${itemSets.patchVersion}) #${build.id}/${build.number} | ${title}`;
+    }
+  }
+});
+
+Router.route('/api/patch', function () {
+  const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : 1 }, limit: 1 });
+  if (!lastItemSetGeneration) {
+    this.response.end(JSON.stringify({ err: 'Unknown patch version' }));
+  }
+  this.response.end(JSON.stringify({ version: lastItemSetGeneration.patchVersion, generationDate: lastItemSetGeneration.generationDate }));
+}, { where: 'server' });
+Router.route('/api/news', function () {
+  const announcement = TwitterAnnouncements.findOne({}, { sort: { date : 1 }, limit: 1 });
+  const content = announcement ? announcement.shortenContent : '';
+  this.response.end(JSON.stringify({ text: content }));
+}, { where: 'server' });
+
+// TODO: Create routes/server.js
+if (Meteor.isServer) {
+  const fs = Npm.require('fs');
+
+  function serveSets (response) {
+    var file = process.env.ITEM_SETS_ZIP_LOCATION;
+    var stat = null;
+    try {
+      stat = fs.statSync(file);
+    } catch (_error) {
+      response.statusCode = 404;
+      response.end();
+    }
+    var attachmentFilename = 'ItemSets.zip';
+    response.writeHead(200, {
+      'Content-Type': 'application/zip',
+      'Content-Disposition': 'attachment; filename=' + attachmentFilename,
+      'Content-Length': stat.size
+    });
+    fs.createReadStream(file).pipe(response);
+  }
+
+  Router.route('/downloads/sets-from-website', function () {
+    Meteor.call('server/registerDownload', 'sets-from-website');
+    serveSets(this.response);
+  }, { where: 'server' });
+  Router.route('/downloads/sets-from-app', function () {
+    Meteor.call('server/registerDownload', 'sets-from-app');
+    serveSets(this.response);
+  }, { where: 'server' });
+  Router.route('/downloads/windows-app-from-website', function () {
+    Meteor.call('server/registerDownload', 'windows-app-from-website');
+    // TODO: Handle error if no version with 404
+    const link = Versions.findOne({ type: 'windows-app' }).link;
+    this.response.writeHead(302, {
+      'Location': link
+    });
+    this.response.end();
+  }, { where: 'server' });
+  Router.route('/downloads/mac-app-from-website', function () {
+    Meteor.call('server/registerDownload', 'mac-app-from-website');
+    // TODO: Handle error if no version with 404
+    const link = Versions.findOne({ type: 'mac-app' }).link;
+    this.response.writeHead(302, {
+      'Location': link
+    });
+    this.response.end();
+  }, { where: 'server' });
+
+  // For backward compatibility with the oldest apps
+  Router.route('/clicks/click.php', function () {
+    // /clicks/click.php?id=dl_sets_from_application
+    if (this.params.query.id === 'dl_sets_from_application') {
+      this.response.writeHead(302, {
+        'Location': '/download/sets'
+      });
+      this.response.end();
+    } else {
+      this.response.writeHead(302, {
+        'Location': '/'
+      });
+      this.response.end();
+    }
+  }, { where: 'server' });
+}

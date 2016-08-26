@@ -1,0 +1,29 @@
+<template name="MasterLayout">
+
+    <div class="{{styles.master_layout}}">
+
+        <div class="{{styles.content}}" itemscope itemtype="http://schema.org/SoftwareApplication">
+
+            <header>
+                {{> Header}}
+            </header>
+
+            <main class="container">
+
+                {{> yield}}
+
+                <!-- {{> Chat}} -->
+
+                {{> Ribbon}}
+
+            </main>
+
+            <footer>
+                {{> Footer}}
+            </footer>
+
+        </div>
+
+    </div>
+
+</template>
