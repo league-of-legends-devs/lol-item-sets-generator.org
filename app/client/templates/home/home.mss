@@ -23,7 +23,7 @@
   margin-top: 18px;
   font-size: 2em;
   border: 1px solid #E0E0E0;
-  background: url(img/sets_button.png);
+  background: url(img/sets_button.jpg);
   width: 100%;
   height: 100%;
 }
