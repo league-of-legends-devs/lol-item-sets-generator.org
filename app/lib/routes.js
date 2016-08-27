@@ -124,6 +124,7 @@ Router.route('/sets', {
   layoutTemplate: 'MasterLayout',
   name: 'Sets',
   template: 'Sets',
+  controller: 'SetsController',
   where: 'client',
   data: function () {
     let routeData = Session.get('routeData') || {};
@@ -146,7 +147,7 @@ Router.route('/sets/:_id', {
   layoutTemplate: 'MasterLayout',
   name: 'SetsId',
   template: 'Sets',
-  controller: 'SetsController',
+  controller: 'SetController',
   where: 'client',
   data: function () {
     let routeData = Session.get('routeData') || {};
