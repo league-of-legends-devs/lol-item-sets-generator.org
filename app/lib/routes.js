@@ -245,6 +245,7 @@ if (Meteor.isServer) {
     } catch (_error) {
       response.statusCode = 404;
       response.end();
+      return;
     }
     var attachmentFilename = 'ItemSets.zip';
     response.writeHead(200, {
@@ -253,6 +254,11 @@ if (Meteor.isServer) {
       'Content-Length': stat.size
     });
     fs.createReadStream(file).pipe(response);
+  }
+
+  function err404 (response) {
+    response.writeHead(404);
+    response.end('404 ! No app version found.');
   }
 
   Router.route('/downloads/sets-from-website', function () {
@@ -265,8 +271,12 @@ if (Meteor.isServer) {
   }, { where: 'server' });
   Router.route('/downloads/windows-app-from-website', function () {
     Meteor.call('server/registerDownload', 'windows-app-from-website');
-    // TODO: Handle error if no version with 404
-    const link = Versions.findOne({ type: 'windows-app' }).link;
+    const version = Versions.findOne({ type: 'windows-app' });
+    err404(this.response);
+    return;
+    if (!version || !version.link) {
+    }
+    const link = version.link;
     this.response.writeHead(302, {
       'Location': link
     });
@@ -274,8 +284,12 @@ if (Meteor.isServer) {
   }, { where: 'server' });
   Router.route('/downloads/mac-app-from-website', function () {
     Meteor.call('server/registerDownload', 'mac-app-from-website');
-    // TODO: Handle error if no version with 404
-    const link = Versions.findOne({ type: 'mac-app' }).link;
+    const version = Versions.findOne({ type: 'mac-app' });
+    err404(this.response);
+    return;
+    if (!version || !version.link) {
+    }
+    const link = version.link;
     this.response.writeHead(302, {
       'Location': link
     });
