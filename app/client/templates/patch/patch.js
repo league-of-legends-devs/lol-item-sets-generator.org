@@ -21,7 +21,13 @@ Template.Patch.helpers({
 /* Patch: Lifecycle Hooks */
 /*****************************************************************************/
 Template.Patch.onCreated(function () {
-  this.subscribe('ItemSets');
+  var self = this;
+  const subscriptions = new SubsManager();
+  self.ready = new ReactiveVar();
+  self.autorun(function() {
+      var handle = subscriptions.subscribe('ItemSets');
+      self.ready.set(handle.ready());
+  });
 });
 
 Template.Patch.onRendered(function () {

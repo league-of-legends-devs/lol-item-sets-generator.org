@@ -1,3 +1,5 @@
+let subscriptions = new SubsManager();
+
 SetsController = RouteController.extend({
 
   // A place to put your subscriptions
@@ -6,6 +8,9 @@ SetsController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
 
   subscriptions: function() {
+    return [
+      subscriptions.subscribe('ItemSets')
+    ];
   },
 
   // Subscriptions or other things we want to "wait" on. This also
@@ -14,9 +19,6 @@ SetsController = RouteController.extend({
   // return Meteor.subscribe('post', this.params._id);
 
   waitOn: function () {
-    return [
-      Meteor.subscribe('ItemSets')
-    ];
   },
 
   // A data function that can be used to automatically set the data context for

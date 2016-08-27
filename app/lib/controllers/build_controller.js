@@ -1,3 +1,5 @@
+let subscriptions = new SubsManager();
+
 BuildController = RouteController.extend({
 
   // A place to put your subscriptions
@@ -7,7 +9,7 @@ BuildController = RouteController.extend({
 
   subscriptions: function() {
     return [
-      Meteor.subscribe('ItemSets')
+      subscriptions.subscribe('ItemSets')
     ];
   },
 

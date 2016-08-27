@@ -15,7 +15,10 @@ tracker                 # Meteor's client-side reactive programming library
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
+reactive-var
+
 ## Client Libs
+meteorhacks:subs-manager
 twbs:bootstrap
 fourseven:scss
 nathantreid:css-modules
@@ -27,6 +30,7 @@ aldeed:autoform
 iron:router
 check
 underscore
+meteorhacks:unblock
 aldeed:collection2
 dburles:collection-helpers
 jparker:crypto-md5

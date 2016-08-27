@@ -4,6 +4,7 @@
 
 Meteor.methods({
   'server/postEntry': function (doc) {
+    this.unblock();
     check(doc, GuestbookEntriesFormSchema);
     var user = Meteor.users.findOne({ _id: this.userId });
     if (!user.services.twitter) {
@@ -26,6 +27,7 @@ Meteor.methods({
     GuestbookEntries.insert(doc);
   },
   'server/approveEntry': function (entryId) {
+    this.unblock();
     var user = Meteor.users.findOne({ _id: this.userId });
     if (!Roles.userIsInRole(user, ['admin'])) {
       throw new Meteor.Error(403, 'You can\'t approve an entry if you\'re not an admin.', 'Can\'t approve if not admin');
@@ -33,6 +35,7 @@ Meteor.methods({
     GuestbookEntries.update({ _id : entryId }, { $set: { approved: true } });
   },
   'server/registerDownload': function (type) {
+    this.unblock();
     if (!Downloads.findOne({ type: type })) {
       const doc = {
         type: type,

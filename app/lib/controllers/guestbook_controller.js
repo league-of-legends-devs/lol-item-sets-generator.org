@@ -1,3 +1,5 @@
+let subscriptions = new SubsManager();
+
 GuestbookController = RouteController.extend({
 
   // A place to put your subscriptions
@@ -7,7 +9,7 @@ GuestbookController = RouteController.extend({
 
   subscriptions: function() {
     return [
-      Meteor.subscribe('GuestbookEntries')
+      subscriptions.subscribe('GuestbookEntries')
     ];
   },
 
