@@ -18,10 +18,10 @@ Template.ItemSet.helpers({
     return this.itemSet.itemSet;
   },
   championImage: (patch, champion) => {
-    return `http://ddragon.leagueoflegends.com/cdn/${patch}/img/champion/${champion}.png`;
+    return `https://ddragon.leagueoflegends.com/cdn/${patch}/img/champion/${champion}.png`;
   },
   itemImage: (patch, itemId) => {
-    return `http://ddragon.leagueoflegends.com/cdn/${patch}/img/item/${itemId}.png`;
+    return `https://ddragon.leagueoflegends.com/cdn/${patch}/img/item/${itemId}.png`;
   }
 });
 

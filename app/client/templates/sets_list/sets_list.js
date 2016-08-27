@@ -18,7 +18,7 @@ Template.SetsList.helpers({
     return this.itemSets.sets;
   },
   championImage: (patch, champion) => {
-    return `http://ddragon.leagueoflegends.com/cdn/${patch}/img/champion/${champion}.png`;
+    return `https://ddragon.leagueoflegends.com/cdn/${patch}/img/champion/${champion}.png`;
   },
   getSetNumberFromIndex: index => index + 1
 });
