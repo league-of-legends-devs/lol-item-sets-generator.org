@@ -11,7 +11,7 @@ Template.Patch.events({
 /*****************************************************************************/
 Template.Patch.helpers({
   patch: () => {
-    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : 1 }, limit: 1 });
+    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
     const patch = lastItemSetGeneration ? lastItemSetGeneration.patchVersion : 'unknown';
     return patch;
   }

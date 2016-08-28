@@ -51,7 +51,7 @@ Router.route('/', {
   controller: 'HomeController',
   where: 'client',
   data: function () {
-    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : 1 }, limit: 1 });
+    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
     let patch = lastItemSetGeneration ? lastItemSetGeneration.patchVersion : 'unknown';
     if (!patch) {
       patch = {
@@ -128,7 +128,7 @@ Router.route('/sets', {
   where: 'client',
   data: function () {
     let routeData = Session.get('routeData') || {};
-    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : 1 }, limit: 1 });;
+    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
     routeData.itemSets = {
       id: this.params._id,
       sets: lastItemSetGeneration
@@ -153,7 +153,7 @@ Router.route('/sets/:_id', {
     let routeData = Session.get('routeData') || {};
     let lastItemSetGeneration;
     if (!this.params._id) {
-      lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : 1 }, limit: 1 });
+      lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
     } else {
       lastItemSetGeneration = ItemSets.findOne(new Meteor.Collection.ObjectID(this.params._id));
     }
@@ -222,7 +222,7 @@ Router.route('/sets/:_id/:_number', {
 });
 
 Router.route('/api/patch', function () {
-  const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : 1 }, limit: 1 });
+  const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
   if (!lastItemSetGeneration) {
     this.response.end(JSON.stringify({ err: 'Unknown patch version' }));
   }
