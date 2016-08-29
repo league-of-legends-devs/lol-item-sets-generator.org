@@ -226,7 +226,7 @@ Router.route('/sets/:_id/:_number', {
 });
 
 Router.route('/privacy', {
-  name: 'privacy',
+  name: 'Privacy',
   controller: 'PrivacyController',
   where: 'client'
 });
