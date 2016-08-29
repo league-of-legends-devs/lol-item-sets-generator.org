@@ -277,9 +277,9 @@ if (Meteor.isServer) {
   Router.route('/downloads/windows-app-from-website', function () {
     Meteor.call('server/registerDownload', 'windows-app-from-website');
     const version = Versions.findOne({ type: 'windows-app' });
-    err404(this.response);
-    return;
     if (!version || !version.link) {
+      err404(this.response);
+      return;
     }
     const link = version.link;
     this.response.writeHead(302, {
@@ -290,9 +290,9 @@ if (Meteor.isServer) {
   Router.route('/downloads/mac-app-from-website', function () {
     Meteor.call('server/registerDownload', 'mac-app-from-website');
     const version = Versions.findOne({ type: 'mac-app' });
-    err404(this.response);
-    return;
     if (!version || !version.link) {
+      err404(this.response);
+      return;
     }
     const link = version.link;
     this.response.writeHead(302, {
