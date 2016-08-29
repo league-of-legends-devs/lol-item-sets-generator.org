@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@5.196.66.83:ilshidur/lol-item-sets-generator.org.git"
+    "url": "https://github.com/Ilshidur/lol-item-sets-generator.org.git"
   },
   "author": "Ilshidur <ilshidur@gmail.com> (https://www.nicolas-coutin.fr)",
   "license": "ISC",
