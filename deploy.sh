@@ -46,7 +46,7 @@ echo "Building : done !"
 
 ## Install NPM dependencies
 echo "Installing NPM dependencies ..."
-(cd build/bundle/programs/server && npm install)
+npm run install:prod
 echo "Installed NPM dependencies !"
 
 ## Run with pm2

@@ -17,6 +17,7 @@
     "start": "iron",
     "build:dev": "METEOR_SETTINGS=$(cat config/development/settings.json) iron build",
     "build:prod": "METEOR_SETTINGS=$(cat config/production/settings.json) iron build",
+    "install:prod": "(cd build/bundle/programs/server && npm install)",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
