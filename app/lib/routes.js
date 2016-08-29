@@ -225,6 +225,12 @@ Router.route('/sets/:_id/:_number', {
   fastRender: true
 });
 
+Router.route('/privacy', {
+  name: 'privacy',
+  controller: 'PrivacyController',
+  where: 'client'
+});
+
 Router.route('/api/patch', function () {
   const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
   if (!lastItemSetGeneration) {
