@@ -1,6 +1,10 @@
 const title = 'LoL item sets generator';
 const description = 'Download the best -generated- League of Legends recommended items.';
 
+// TODO: Migrate the routes config to their Controllers
+// TODO: Use reactive states instead of Session vars
+// like : http://iron-meteor.github.io/iron-router/#setting-reactive-state-variables
+
 if (Meteor.isClient) {
   Router.plugin('seo', {
     title: title,
