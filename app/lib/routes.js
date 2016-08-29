@@ -153,7 +153,7 @@ Router.route('/sets/:_id', {
     let routeData = Session.get('routeData') || {};
     let lastItemSetGeneration;
     if (!this.params._id) {
-      lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
+      Router.go('Sets');
     } else {
       lastItemSetGeneration = ItemSets.findOne(new Meteor.Collection.ObjectID(this.params._id));
     }

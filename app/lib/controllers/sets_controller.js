@@ -7,9 +7,9 @@ SetsController = RouteController.extend({
   // // add the subscription to the waitlist
   // this.subscribe('item', this.params._id).wait();
 
-  subscriptions: function() {
+  subscriptions: function () {
     return [
-      subscriptions.subscribe('ItemSets')
+      subscriptions.subscribe('ItemSets.last')
     ];
   },
 

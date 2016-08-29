@@ -11,7 +11,7 @@ Template.Patch.events({
 /*****************************************************************************/
 Template.Patch.helpers({
   patch: () => {
-    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
+    const lastItemSetGeneration = ItemSets.findOne();
     const patch = lastItemSetGeneration ? lastItemSetGeneration.patchVersion : 'unknown';
     return patch;
   }
@@ -25,7 +25,7 @@ Template.Patch.onCreated(function () {
   const subscriptions = new SubsManager();
   self.ready = new ReactiveVar();
   self.autorun(function() {
-      var handle = subscriptions.subscribe('ItemSets');
+      var handle = subscriptions.subscribe('ItemSets.last');
       self.ready.set(handle.ready());
   });
 });

@@ -20,7 +20,13 @@ Template.Announcements.helpers({
 /* Announcements: Lifecycle Hooks */
 /*****************************************************************************/
 Template.Announcements.onCreated(function () {
-  this.subscribe('TwitterAnnouncements');
+  var self = this;
+  const subscriptions = new SubsManager();
+  self.ready = new ReactiveVar();
+  self.autorun(function() {
+      var handle = subscriptions.subscribe('TwitterAnnouncements.last');
+      self.ready.set(handle.ready());
+  });
 });
 
 Template.Announcements.onRendered(function () {
