@@ -56,12 +56,7 @@ Router.route('/', {
   where: 'client',
   data: function () {
     const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
-    let patch = lastItemSetGeneration ? lastItemSetGeneration.patchVersion : 'unknown';
-    if (!patch) {
-      patch = {
-        version: 'unknown'
-      };
-    }
+    let patchVersion = lastItemSetGeneration ? (lastItemSetGeneration.patchVersion || 'unknown') : 'unknown';
     const downloadsSources = ['sets-from-website', 'windows-app-from-website', 'mac-app-from-website'];
     let downloads = {};
     for (let source of downloadsSources) {
@@ -79,7 +74,7 @@ Router.route('/', {
     }
     const routeData = Session.get('routeData') || {};
     routeData.home = {
-      version: patch,
+      version: patchVersion,
       downloads: downloads,
       versions: versions,
       totalDownloads: total
@@ -90,8 +85,10 @@ Router.route('/', {
   seo: {
     title: function () {
       const routeData = Session.get('routeData') || {};
-      const patch = routeData.patch ? routeData.patch.version : 'unknown';
-      return `League of Legends item sets generator (patch ${patch})`;
+      console.log(routeData);
+      const data = routeData.home || {};
+      const patchVersion = data.version;
+      return `League of Legends item sets generator (patch ${patchVersion})`;
     }
   },
   fastRender: true
