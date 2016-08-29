@@ -1,6 +1,6 @@
 Meteor.startup(function () {
   Accounts.onCreateUser(function (options, user) {
-    // user.profile = {};
+    user.profile = {};
     // Create a empty array to avoid the Exception while invoking method 'adminCheckAdmin'
     // see : https://github.com/yogiben/meteor-admin/issues/260
     user.emails = [];
