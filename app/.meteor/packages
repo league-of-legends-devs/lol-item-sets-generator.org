@@ -38,7 +38,7 @@ jparker:crypto-md5
 ## Accounts
 accounts-base
 accounts-twitter
-ian:accounts-ui-bootstrap-3
+accounts-ui
 alanning:roles
 
 ## Misc modules
