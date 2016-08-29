@@ -18,6 +18,7 @@
       "args": ["--release"],
       "port": 9000,
       "watch": false,
+      "source_map_support": true,
       "instances": 0,
       "exec_mode": "cluster"
     }
