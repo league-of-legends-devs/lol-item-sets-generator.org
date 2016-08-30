@@ -36,9 +36,9 @@ dburles:collection-helpers
 jparker:crypto-md5
 
 ## Accounts
+accounts-ui
 accounts-base
 accounts-twitter
-accounts-ui
 alanning:roles
 
 ## Misc modules
