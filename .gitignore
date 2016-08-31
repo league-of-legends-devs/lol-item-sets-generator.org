@@ -2,3 +2,4 @@
 /app/node_modules
 /build
 /node_modules
+ecosystem.json*
