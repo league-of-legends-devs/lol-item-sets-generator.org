@@ -6,6 +6,11 @@ Download the best -generated- League of Legends recommended items.
 
 ![preview](preview.png)
 
+## Reporting a bug
+
+* Bug on the **website** : [submit here](https://github.com/Ilshidur/lol-item-sets-generator.org/issues/new)
+* Bug on the **item sets** : [submit here](https://github.com/Ilshidur/lol-item-sets-builder/issues/new)
+
 ## Build
 
 Required :
