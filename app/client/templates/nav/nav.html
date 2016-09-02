@@ -14,7 +14,11 @@
         <div class="collapse navbar-collapse" id="nav-bar--collapse">
           <ul class="nav navbar-nav navbar-left">
             {{#each link in links.left}}
-              <li><a href="{{pathFor route=link.route}}">{{link.name}}</a></li>
+              {{#if link._id}}
+                <li><a href="{{pathFor route=link.route _id=link._id}}">{{link.name}}</a></li>
+              {{else}}
+                <li><a href="{{pathFor route=link.route}}">{{link.name}}</a></li>
+              {{/if}}
             {{/each}}
           </ul>
           <ul class="nav navbar-nav navbar-right">
