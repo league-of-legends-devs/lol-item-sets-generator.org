@@ -11,6 +11,7 @@ Template.Guestbook.events({
 /*****************************************************************************/
 Template.Guestbook.helpers({
   styles: styles,
+  links: {},
   entries: () => {
     return GuestbookEntries.find().fetch();
   },
@@ -20,7 +21,6 @@ Template.Guestbook.helpers({
   isTwitter: (author) => {
     return author.startsWith('@');
   },
-  links: [],
   dateToFormat: (rawDate) => {
     return {
       value: rawDate

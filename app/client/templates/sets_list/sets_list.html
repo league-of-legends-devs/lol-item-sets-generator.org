@@ -6,14 +6,22 @@
           <div class="container-fluid">
             <p class="text-center"><b>{{sets.patchVersion}}</b> - generated at {{> FormatedDate value=sets.generationDate}}</p>
             <div class="row">
-              {{#each itemSet in sets.sets}}
-                <div class="{{styles.itemSet}} col-lg-1 col-md-1 col-sm-2 col-xs-2">
-                  <a href="{{pathFor route='Build' _id=(getIdFromObjectId sets._id) _number=(getSetNumberFromIndex @index)}}" class="{{styles.itemSetLink}}">
-                    <p class="{{styles.itemSetRole}}">{{itemSet.role}}</p>
-                    <img src="{{championImage sets.patchVersion itemSet.champion}}" alt="{{itemSet.champion}}" class="{{styles.champImage}} img-responsive img-center center-block">
-                  </a>
-                </div>
-              {{/each}}
+              {{#with champsSets=(filterSets sets.sets)}}
+                {{#if champsSets}}
+                  {{#each itemSet in champsSets}}
+                    <div class="{{styles.itemSet}} col-lg-1 col-md-1 col-sm-2 col-xs-2">
+                      <a href="{{pathFor route='Build' _id=(getIdFromObjectId sets._id) _number=(getSetNumberFromIndex @index)}}" class="{{styles.itemSetLink}}">
+                        <p class="{{styles.itemSetRole}}">{{itemSet.role}}</p>
+                        <img src="{{championImage sets.patchVersion itemSet.champion}}" alt="{{itemSet.champion}}" class="{{styles.champImage}} img-responsive img-center center-block">
+                      </a>
+                    </div>
+                  {{/each}}
+                {{else}}
+                  <div class="text-center">
+                    <h1>Nothing :(</h1>
+                  </div>
+                {{/if}}
+              {{/with}}
             </div>
           </div>
         {{/let}}

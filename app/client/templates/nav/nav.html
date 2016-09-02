@@ -1,16 +1,33 @@
 <template name="Nav">
-  <div class="nav">
-    <nav>
-      <ul class="nav navbar-nav">
-        <li><a href="{{pathFor route='Home'}}">Home</a></li>
-        {{#each this}}
-          {{#if this._id}}
-            <li><a href="{{pathFor route=route _id=this._id}}">{{name}}</a></li>
-          {{else}}
-            <li><a href="{{pathFor route=route}}">{{name}}</a></li>
-          {{/if}}
-        {{/each}}
-      </ul>
+  <div class="{{styles.nav}}">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-bar--collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="{{pathFor route='Home'}}" class="navbar-brand">Home</a>
+        </div>
+        <div class="collapse navbar-collapse" id="nav-bar--collapse">
+          <ul class="nav navbar-nav navbar-left">
+            {{#each link in links.left}}
+              <li><a href="{{pathFor route=link.route}}">{{link.name}}</a></li>
+            {{/each}}
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {{#if isTemplate links.right}}
+              {{> UI.dynamic template=links.right.template data=links.right.data}}
+            {{else}}
+              {{#each link in links.right}}
+                <li><a href="{{pathFor route=link.route}}">{{link.name}}</a></li>
+              {{/each}}
+            {{/if}}
+          </ul>
+        </div>
+      </div>
     </nav>
   </div>
 </template>

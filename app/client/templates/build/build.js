@@ -14,16 +14,20 @@ Template.Build.helpers({
   links: function () {
     let owningItemSets = this.build.itemSets;
     if (!owningItemSets) {
-      return [{
-        route: 'Sets',
-        name: `Back to the sets`
-      }];
+      return {
+        left: [{
+          route: 'Sets',
+          name: `Back to the sets`
+        }]
+      };
     }
-    return [{
-      route: 'SetsId',
-      name: `Back to ${owningItemSets.patchVersion} sets`,
-      _id: owningItemSets._id.valueOf()
-    }];
+    return {
+      left: [{
+        route: 'SetsId',
+        name: `Back to ${owningItemSets.patchVersion} sets`,
+        _id: owningItemSets._id.valueOf()
+      }]
+    };
   },
   routeItemSet: function () {
     return this.build;

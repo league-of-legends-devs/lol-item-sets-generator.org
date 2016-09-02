@@ -11,7 +11,26 @@ Template.Sets.events({
 /*****************************************************************************/
 Template.Sets.helpers({
   styles: styles,
-  links: [{'route': 'Sets', 'name': 'Latest item sets'}],
+  links: function () {
+    let template = Template.instance();
+    return {
+      left: [{
+        route: 'Sets',
+        name: 'Latest item sets'
+      }],
+      right: {
+        template: 'NavBarCreateAndSearchSets',
+        data: {
+          textChangeHandler: (text) => {
+            template.searchQuery.set(text);
+          }
+        }
+      }
+    };
+  },
+  searchQuery: () => {
+    return Template.instance().searchQuery;
+  },
   routeItemSets: function () {
     return this.itemSets;
   }
@@ -21,6 +40,8 @@ Template.Sets.helpers({
 /* Sets: Lifecycle Hooks */
 /*****************************************************************************/
 Template.Sets.onCreated(function () {
+  let template = Template.instance();
+  template.searchQuery = new ReactiveVar('');
 });
 
 Template.Sets.onRendered(function () {

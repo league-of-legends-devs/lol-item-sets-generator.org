@@ -1,8 +1,10 @@
 <template name="Sets">
-  <div class="sets app-page">
-    {{> Nav links}}
-    <div class="app-page-content">
-      {{> SetsList itemSets=routeItemSets}}
+  <div>
+    <div>
+      {{> Nav links=links}}
+    </div>
+    <div>
+      {{> SetsList itemSets=routeItemSets filter=searchQuery}}
     </div>
   </div>
 </template>

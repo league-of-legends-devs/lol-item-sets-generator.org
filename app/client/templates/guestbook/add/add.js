@@ -11,7 +11,12 @@ Template.Guestbook_Add.events({
 /*****************************************************************************/
 Template.Guestbook_Add.helpers({
   styles: styles,
-  links: [{'route': 'Guestbook', 'name': 'Back to the reviews'}],
+  links: {
+    left: [{
+      route: 'Guestbook',
+      name: 'Back to the reviews'
+    }]
+  },
   formSchema: () => {
     return GuestbookEntriesFormSchema;
   }
