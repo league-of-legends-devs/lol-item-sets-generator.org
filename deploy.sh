@@ -36,9 +36,6 @@ else
 	echo "Installed PM2 !"
 fi
 
-## Update submodules
-git submodule update --init --recursive
-
 ## Build
 echo "Building ..."
 npm run build:prod
