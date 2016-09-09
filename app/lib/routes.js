@@ -251,6 +251,7 @@ if (Meteor.isServer) {
       stat = fs.statSync(file);
     } catch (_error) {
       response.statusCode = 404;
+      console.log('404 : cannot find ' + process.env.ITEM_SETS_ZIP_LOCATION + ' file !');
       response.end();
       return;
     }
