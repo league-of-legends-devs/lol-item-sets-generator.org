@@ -21,7 +21,7 @@ Template.Header.helpers({
 /*****************************************************************************/
 Template.Header.onCreated(function () {
   let template = Template.instance();
-  template.showLoginButtons = new ReactiveVar(false);
+  template.showLoginButtons = new ReactiveVar(true);
   Meteor.call('server/getConfig', 'showLoginButtons', function (err, response) {
     if (!err) {
       template.showLoginButtons.set(response.value == 'true');
