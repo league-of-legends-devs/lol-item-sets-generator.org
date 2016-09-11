@@ -25,6 +25,14 @@ Template.Header.onCreated(function () {
   Meteor.call('server/getConfig', 'showLoginButtons', function (err, response) {
     if (!err) {
       template.showLoginButtons.set(response.value == 'true');
+    } else {
+      $.notify({
+      	message: err,
+        icon: 'glyphicon glyphicon-warning-sign'
+      },{
+      	type: 'danger'
+      });
+      console.error(err);
     }
   });
 });
