@@ -87,7 +87,7 @@ Router.route('/', {
       const routeData = Session.get('routeData') || {};
       const data = routeData.home || {};
       const patchVersion = data.version;
-      return `League of Legends item sets generator (patch ${patchVersion})`;
+      return `League of Legends item sets generator` + (patchVersion ? ` (patch ${patchVersion})` : '');
     }
   },
   fastRender: true
