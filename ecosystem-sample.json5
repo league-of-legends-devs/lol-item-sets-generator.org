@@ -12,7 +12,6 @@
         "ADMIN_MAIL": "name@domain.com",
         "KADIRA_APP_ID": "APP_ID",
         "KADIRA_APP_SECRET": "APP_SECRET",
-        "PRERENDER_TOKEN": "PRERENDER_TOKEN",
         "PORT": 9000
       },
       "args": ["--release"],

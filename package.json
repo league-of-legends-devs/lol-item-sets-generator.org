@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "https://lol-item-sets-generator.org",
   "dependencies": {
-    "prerender-node": "^2.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.0",

@@ -1,14 +1,4 @@
-import prerenderio from 'prerender-node';
-
 Meteor.startup(function () {
-  // Prerender
-  var prerenderToken = process.env.PRERENDER_TOKEN;
-  if (prerenderToken) {
-    prerenderio.set('prerenderToken', prerenderToken);
-    prerenderio.set('host', process.env.ROOT_URL);
-    prerenderio.set('protocol', 'https');
-    WebApp.rawConnectHandlers.use(prerenderio);
-  }
 
   Accounts.onCreateUser(function (options, user) {
     console.log(user);
@@ -23,4 +13,5 @@ Meteor.startup(function () {
     console.log(user);
     return user;
   });
+  
 });
