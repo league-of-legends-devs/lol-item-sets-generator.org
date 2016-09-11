@@ -33,6 +33,9 @@
         <div>
           <h2>(ノಠ益ಠ)ノ彡┻━┻</h2>
           <h3>Please log in to add a new entry and refresh the page.</h3>
+          {{#unless showLoginButtons}}
+            <h4>Oh wait ... we disabled the login button temporarily. Nevermind.</h4>
+          {{/unless}}
         </div>
         {{/if}}
       </div>

@@ -70,6 +70,17 @@ AdminConfig = {
         { label: 'Shorten content', name: 'shortenContent' },
         { label: 'Date', name: 'creationDate', template: 'FormatedDate' }
       ]
+    },
+    Config: {
+      icon: 'cog',
+      color: 'navy',
+      showEditColumn: true,
+      showDelColumn: true,
+      tableColumns: [
+        { label: 'ID', name: 'id' },
+        { label: 'Location', name: 'location' },
+        { label: 'Value', name: 'value' }
+      ]
     }
   }
 };

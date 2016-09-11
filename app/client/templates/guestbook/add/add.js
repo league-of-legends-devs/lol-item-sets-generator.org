@@ -19,6 +19,9 @@ Template.Guestbook_Add.helpers({
   },
   formSchema: () => {
     return GuestbookEntriesFormSchema;
+  },
+  showLoginButtons: () => {
+    return Template.instance().showLoginButtons.get();
   }
 });
 
@@ -26,6 +29,17 @@ Template.Guestbook_Add.helpers({
 /* Add: Lifecycle Hooks */
 /*****************************************************************************/
 Template.Guestbook_Add.onCreated(function () {
+  let template = Template.instance();
+  template.showLoginButtons = new ReactiveVar(false);
+  Meteor.call('server/getConfig', 'showLoginButtons', function (err, response) {
+    if (!err) {
+      const enabled = response.value == 'true';
+      template.showLoginButtons.set(enabled);
+      if (!enabled) {
+        Meteor.logout();
+      }
+    }
+  });
 });
 
 Template.Guestbook_Add.onRendered(function () {

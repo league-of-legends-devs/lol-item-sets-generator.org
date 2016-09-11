@@ -10,13 +10,23 @@ Template.Header.events({
 /* Header: Helpers */
 /*****************************************************************************/
 Template.Header.helpers({
-  styles: styles
+  styles: styles,
+  showLoginButtons: () => {
+    return Template.instance().showLoginButtons.get();
+  }
 });
 
 /*****************************************************************************/
 /* Header: Lifecycle Hooks */
 /*****************************************************************************/
 Template.Header.onCreated(function () {
+  let template = Template.instance();
+  template.showLoginButtons = new ReactiveVar(false);
+  Meteor.call('server/getConfig', 'showLoginButtons', function (err, response) {
+    if (!err) {
+      template.showLoginButtons.set(response.value == 'true');
+    }
+  });
 });
 
 Template.Header.onRendered(function () {
