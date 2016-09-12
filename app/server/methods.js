@@ -46,13 +46,14 @@ Meteor.methods({
     } else {
       Downloads.update({ type: type }, { $inc: { count: 1 } });
     }
-  },
+  }/*,
   'server/getConfig': function (configName) {
+    this.unblock();
     check(configName, String);
     const result = Config.findOne({ id: configName, location: { $in: ['both', 'client'] } });
     if (!result) {
       throw new Meteor.Error(404, 'Config not found.', 'Not found.');
     }
     return result;
-  }
+  }*/
 });
