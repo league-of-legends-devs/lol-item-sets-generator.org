@@ -26,12 +26,12 @@ Template.Header.onCreated(function () {
     if (!err) {
       template.showLoginButtons.set(response.value == 'true');
     } else {
-      $.notify({
+      /*$.notify({
       	message: err,
         icon: 'glyphicon glyphicon-warning-sign'
       },{
       	type: 'danger'
-      });
+      });*/
       console.error(err);
     }
   });
