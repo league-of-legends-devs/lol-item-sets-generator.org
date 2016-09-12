@@ -8,12 +8,12 @@ Meteor.methods({
     check(doc, GuestbookEntriesFormSchema);
     var user = Meteor.users.findOne({ _id: this.userId });
     if (!user.services.twitter) {
-      throw new Meteor.Error(403, 'You can\'t post if you are not authenticated with Twitter.', 'Can\'t post if not authenticated');
+      throw new Meteor.Error(403, `You can't post if you are not authenticated with Twitter.`, `Can't post if not authenticated`);
     }
     var username = `@${user.services.twitter.screenName}`;
     var userAlreadyPosted = GuestbookEntries.findOne({ author: username }) !== undefined;
     if (userAlreadyPosted) {
-      throw new Meteor.Error(403, 'You can\'t post an entry twice. If you\'re having a problem, please contact us through our Twitter.', 'Can\'t post twice');
+      throw new Meteor.Error(403, `You can't post an entry twice. If you're having a problem, please contact us through our Twitter.`, `Can't post twice`);
     }
     doc.author = username;
     var entriesCount = GuestbookEntries.find().count() + 1;
@@ -30,7 +30,7 @@ Meteor.methods({
     this.unblock();
     var user = Meteor.users.findOne({ _id: this.userId });
     if (!Roles.userIsInRole(user, ['admin'])) {
-      throw new Meteor.Error(403, 'You can\'t approve an entry if you\'re not an admin.', 'Can\'t approve if not admin');
+      throw new Meteor.Error(403, `You can't approve an entry if you're not an admin.`, `Can't approve if not admin`);
     }
     GuestbookEntries.update({ _id : entryId }, { $set: { approved: true } });
   },
