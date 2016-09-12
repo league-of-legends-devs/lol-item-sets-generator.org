@@ -25,6 +25,7 @@ nathantreid:css-modules
 momentjs:moment
 fortawesome:fontawesome
 aldeed:autoform
+erasaur:meteor-lodash
 
 ## Server libs
 iron:router
