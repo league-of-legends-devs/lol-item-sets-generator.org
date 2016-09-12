@@ -11,6 +11,7 @@
 
 .itemSet {
   padding: 0;
+  overflow: hidden;
 }
 
 .itemSetLink {
@@ -39,4 +40,25 @@
 
 .champImage {
   width: 100%;
+}
+
+.spriteContainer {
+  width: 100%;
+}
+.spriteContainer:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.champSprite {
+  background-image: url('https://feeder.lol-item-sets-generator.org/sprites/sprite.png');
+
+  /* from : http://stackoverflow.com/a/28985475/4022804 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
 }

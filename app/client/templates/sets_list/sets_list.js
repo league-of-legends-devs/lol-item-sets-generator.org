@@ -22,18 +22,28 @@ Template.SetsList.helpers({
   },
   filterSets: function (sets) {
     const filter = this.filter.get();
+    const sortedSets = _.sortBy(sets, 'champion');
+    // Define the ID of the item set (for the item set route)
+    const indexedSets = _.map(sortedSets, (s, i) => { return { index: i + 1, set: s }; });
+    let number = -1;
+    let lastChampion = '';
+    // Assign an incrementiel number for each champion
+    const numberedChampsSets = _.map(indexedSets, s => {
+      if (lastChampion != s.set.champion) {
+        number++;
+        lastChampion = s.set.champion;
+      }
+      return { index: s.index, set: s.set, championNumber: number };
+    });
+    let result = numberedChampsSets;
     if (filter && filter !== '') {
       const filterTxt = filter.toLowerCase();
-      return sets.filter(s => {
-        return s.champion.toLowerCase().includes(filterTxt) || s.role.toLowerCase().includes(filterTxt);
+      result = numberedChampsSets.filter(s => {
+        return s.set.champion.toLowerCase().includes(filterTxt) || s.set.role.toLowerCase().includes(filterTxt);
       });
     }
-    return sets;
-  },
-  championImage: (patch, champion) => {
-    return `https://ddragon.leagueoflegends.com/cdn/${patch}/img/champion/${champion}.png`;
-  },
-  getSetNumberFromIndex: index => index + 1
+    return { total: number, sets: result };
+  }
 });
 
 /*****************************************************************************/
