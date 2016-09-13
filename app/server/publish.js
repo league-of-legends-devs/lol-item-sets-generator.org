@@ -1,11 +1,11 @@
 Meteor.publish('ItemSets.id', function (id) {
   check(id, String);
   this.unblock();
-  return ItemSets.find(new Meteor.Collection.ObjectID(id));
+  return ItemSets.find(new Meteor.Collection.ObjectID(id), { reactive: false });
 });
 Meteor.publish('ItemSets.last', function () {
   this.unblock();
-  return ItemSets.find({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
+  return ItemSets.find({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 }, { reactive: false });
 });
 
 Meteor.publish('Downloads', function () {
