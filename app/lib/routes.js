@@ -212,7 +212,7 @@ Router.route('/sets/:_param1/:_param2', {
       // /champion/role
       const champion = this.params._param1.toLowerCase();
       const role = this.params._param2.toLowerCase();
-      const itemSets = ItemSets.findOne(); // Only contains the last item sets object
+      const itemSets = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 }, { reactive: false });
       if (!itemSets) {
         this.render('Redirect');
         return;
@@ -227,7 +227,7 @@ Router.route('/sets/:_param1/:_param2', {
         this.render('Redirect');
         return;
       }
-      Router.go('Build', { _param1: itemSet._id.valueOf(), _param2: itemSetIndex + 1 });
+      Router.go('Build', { _param1: itemSets._id.valueOf(), _param2: itemSetIndex + 1 });
     }
     Session.set('routeData', routeData);
     return routeData;
