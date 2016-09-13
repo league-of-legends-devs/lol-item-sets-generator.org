@@ -10,10 +10,7 @@ Template.Nav.events({
 /* Nav: Helpers */
 /*****************************************************************************/
 Template.Nav.helpers({
-  styles: styles,
-  isTemplate: (navbarArea) => {
-    return typeof(navbarArea) === 'object';
-  }
+  styles: styles
 });
 
 /*****************************************************************************/

@@ -24,14 +24,14 @@ Template.Sets.helpers({
       left: [
         ...olderSetsLinks
       ],
-      right: {
+      right: [{
         template: 'NavBarCreateAndSearchSets',
         data: {
           textChangeHandler: (text) => {
             template.searchQuery.set(text);
           }
         }
-      }
+      }]
     };
   },
   searchQuery: () => {

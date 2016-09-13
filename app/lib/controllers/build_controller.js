@@ -12,6 +12,7 @@ BuildController = RouteController.extend({
       // /id/number
       const id = this.params._param1;
       return [
+        subscriptions.subscribe('ItemSets.last'),
         subscriptions.subscribe('ItemSets.id', id)
       ];
     }

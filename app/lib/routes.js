@@ -190,7 +190,8 @@ Router.route('/sets/:_param1/:_param2', {
       // /id/number
       const id = this.params._param1;
       const number = this.params._param2;
-      const itemSets = ItemSets.findOne();
+      const itemSets = ItemSets.findOne(new Meteor.Collection.ObjectID(id));
+      const latestItemSets = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 }, { reactive: false });
       if (!itemSets) {
         this.render('Redirect');
         return;
@@ -204,13 +205,14 @@ Router.route('/sets/:_param1/:_param2', {
         id: id,
         number: number,
         itemSets: itemSets,
-        itemSet: itemSet
+        itemSet: itemSet,
+        latestItemSetsId: latestItemSets._id
       };
     } else {
       // /champion/role
       const champion = this.params._param1.toLowerCase();
       const role = this.params._param2.toLowerCase();
-      const itemSets = ItemSets.findOne();
+      const itemSets = ItemSets.findOne(); // Only contains the last item sets object
       if (!itemSets) {
         this.render('Redirect');
         return;

@@ -14,21 +14,29 @@
         <div class="collapse navbar-collapse" id="nav-bar--collapse">
           <ul class="nav navbar-nav navbar-left">
             {{#each link in links.left}}
-              {{#if link._id}}
-                <li><a href="{{pathFor route=link.route _id=link._id}}">{{link.name}}</a></li>
+              {{#if link.template}}
+                {{> UI.dynamic template=link.template data=link.data}}
               {{else}}
-                <li><a href="{{pathFor route=link.route}}">{{link.name}}</a></li>
+                {{#if link.data}}
+                  <li><a href="{{pathFor route=link.route data=link.data}}">{{link.name}}</a></li>
+                {{else}}
+                  <li><a href="{{pathFor route=link.route}}">{{link.name}}</a></li>
+                {{/if}}
               {{/if}}
             {{/each}}
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            {{#if isTemplate links.right}}
-              {{> UI.dynamic template=links.right.template data=links.right.data}}
-            {{else}}
-              {{#each link in links.right}}
-                <li><a href="{{pathFor route=link.route}}">{{link.name}}</a></li>
-              {{/each}}
-            {{/if}}
+            {{#each link in links.right}}
+              {{#if link.template}}
+                {{> UI.dynamic template=link.template data=link.data}}
+              {{else}}
+                {{#if link.data}}
+                  <li><a href="{{pathFor route=link.route data=link.data}}">{{link.name}}</a></li>
+                {{else}}
+                  <li><a href="{{pathFor route=link.route}}">{{link.name}}</a></li>
+                {{/if}}
+              {{/if}}
+            {{/each}}
           </ul>
         </div>
       </div>

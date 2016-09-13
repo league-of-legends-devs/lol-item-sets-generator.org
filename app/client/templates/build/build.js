@@ -14,20 +14,38 @@ Template.Build.helpers({
   links: function () {
     const build = this.build || {};
     const owningItemSets = build.itemSets;
-    if (!owningItemSets) {
-      return {
-        left: [{
-          route: 'Sets',
-          name: `Back to the sets`
-        }]
-      };
-    }
-    return {
-      left: [{
+    const itemSet = build.itemSet;
+    const leftLinks = [], rightLinks = [];
+    if (owningItemSets) {
+      leftLinks.push({
         route: 'SetsId',
         name: `Back to ${owningItemSets.patchVersion} sets`,
-        _id: owningItemSets._id.valueOf()
-      }]
+        data: {
+          _id: owningItemSets._id.valueOf()
+        }
+      });
+    } else {
+      // TODO: Show "Back to the sets" if the current item sets generation is the latest
+      leftLinks.push({
+        route: 'Sets',
+        name: `Back to the sets`
+      });
+    }
+    const latestSetsId = build.latestItemSetsId;
+    const itemSetsId = owningItemSets && owningItemSets._id.valueOf();
+    if (latestSetsId !== itemSetsId) {
+      rightLinks.push({
+        route: 'Build',
+        name: `Latest ${itemSet.champion} build`,
+        data: {
+          _param1: itemSet.champion,
+          _param2: itemSet.role
+        }
+      });
+    }
+    return {
+      left: leftLinks,
+      right: rightLinks
     };
   },
   routeItemSet: function () {
