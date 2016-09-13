@@ -8,7 +8,7 @@ BuildController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
 
   subscriptions: function () {
-    if (!isNaN(this.params._param1) && !isNaN(this.params._param2)) {
+    if (this.params._param1.match(/^[0-9a-fA-F]{24}$/) && !isNaN(this.params._param2)) {
       // /id/number
       const id = this.params._param1;
       return [
