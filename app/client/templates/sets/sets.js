@@ -13,11 +13,17 @@ Template.Sets.helpers({
   styles: styles,
   links: function () {
     let template = Template.instance();
-    return {
-      left: [{
+    const olderSetsLinks = [];
+    if (this.itemSets.id) {
+      olderSetsLinks.push({
         route: 'Sets',
         name: 'Latest item sets'
-      }],
+      });
+    }
+    return {
+      left: [
+        ...olderSetsLinks
+      ],
       right: {
         template: 'NavBarCreateAndSearchSets',
         data: {
