@@ -12,7 +12,8 @@ Template.Build.events({
 Template.Build.helpers({
   styles: styles,
   links: function () {
-    let owningItemSets = this.build.itemSets;
+    const build = this.build || {};
+    const owningItemSets = build.itemSets;
     if (!owningItemSets) {
       return {
         left: [{
@@ -30,7 +31,7 @@ Template.Build.helpers({
     };
   },
   routeItemSet: function () {
-    return this.build;
+    return this.build || {};
   }
 });
 

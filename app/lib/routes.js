@@ -174,34 +174,59 @@ Router.route('/sets/:_id', {
   },
   fastRender: true
 });
-Router.route('/sets/:_id/:_number', {
+Router.route('/sets/:_param1/:_param2', {
   layoutTemplate: 'MasterLayout',
   name: 'Build',
   template: 'Build',
   controller: 'BuildController',
   where: 'client',
   data: function () {
-    if (!this.params._id || !this.params._number) {
+    if (!this.params._param1 || !this.params._param2) {
       this.render('Redirect');
       return;
     }
     let routeData = Session.get('routeData') || {};
-    const itemSets = ItemSets.findOne(new Meteor.Collection.ObjectID(this.params._id));
-    if (!itemSets) {
-      this.render('Redirect');
-      return;
+    if (this.params._param1.match(/^[0-9a-fA-F]{24}$/) && !isNaN(this.params._param2)) {
+      // /id/number
+      const id = this.params._param1;
+      const number = this.params._param2;
+      const itemSets = ItemSets.findOne();
+      if (!itemSets) {
+        this.render('Redirect');
+        return;
+      }
+      const itemSet = itemSets.sets[number - 1];
+      if (!itemSet) {
+        this.render('Redirect');
+        return;
+      }
+      routeData.build = {
+        id: id,
+        number: number,
+        itemSets: itemSets,
+        itemSet: itemSet
+      };
+    } else {
+      // /champion/role
+      const champion = this.params._param1.toLowerCase();
+      const role = this.params._param2.toLowerCase();
+      const itemSets = ItemSets.findOne();
+      if (!itemSets) {
+        this.render('Redirect');
+        return;
+      }
+      const itemSetIndex = lodash.findIndex(itemSets.sets, s => s.champion.toLowerCase() == champion && s.role.toLowerCase() == role);
+      if (itemSetIndex === -1) {
+        this.render('Redirect');
+        return;
+      }
+      const itemSet = itemSets.sets[itemSetIndex];
+      if (!itemSet) {
+        this.render('Redirect');
+        return;
+      }
+      Router.go('Build', { _param1: itemSet._id.valueOf(), _param2: itemSetIndex + 1 });
     }
-    const itemSet = itemSets.sets[this.params._number - 1];
-    if (!itemSet) {
-      this.render('Redirect');
-      return;
-    }
-    routeData.build = {
-      id: this.params._id,
-      number: this.params._number,
-      itemSets: itemSets,
-      itemSet: itemSet
-    };
     Session.set('routeData', routeData);
     return routeData;
   },

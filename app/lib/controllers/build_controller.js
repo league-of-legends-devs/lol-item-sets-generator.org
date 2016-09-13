@@ -8,8 +8,16 @@ BuildController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
 
   subscriptions: function () {
+    if (!isNaN(this.params._param1) && !isNaN(this.params._param2)) {
+      // /id/number
+      const id = this.params._param1;
+      return [
+        subscriptions.subscribe('ItemSets.id', id)
+      ];
+    }
+    // /champion/role
     return [
-      subscriptions.subscribe('ItemSets.id', this.params._id)
+      subscriptions.subscribe('ItemSets.last')
     ];
   },
 
