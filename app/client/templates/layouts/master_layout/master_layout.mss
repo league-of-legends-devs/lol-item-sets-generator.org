@@ -30,6 +30,6 @@
 
 @media screen and (max-width: 767px) {
   .master_layout main {
-    width: 80%;
+    width: 100%;
   }
 }
