@@ -330,20 +330,5 @@ if (Meteor.isServer) {
     });
     this.response.end();
   }, { where: 'server' });
-
-  // For backward compatibility with the oldest apps
-  Router.route('/clicks/click.php', function () {
-    // /clicks/click.php?id=dl_sets_from_application
-    if (this.params.query.id === 'dl_sets_from_application') {
-      this.response.writeHead(302, {
-        'Location': '/download/sets'
-      });
-      this.response.end();
-    } else {
-      this.response.writeHead(302, {
-        'Location': '/'
-      });
-      this.response.end();
-    }
-  }, { where: 'server' });
+  
 }
