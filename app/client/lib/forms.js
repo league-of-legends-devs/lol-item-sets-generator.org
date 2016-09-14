@@ -1,11 +1,21 @@
 AutoForm.hooks({
   'guestbook--add_entry_form': {
     onSuccess: function (formType, result) {
-      Session.set('guestbook--add_entry_form-result', { msg: 'Thank you ! Your entry will be shown after the admin validated it.' });
+      $.notify({
+      	message: 'Thank you ! Your entry will be shown after the admin validated it.',
+        icon: 'glyphicon glyphicon-warning-sign'
+      },{
+      	type: 'success'
+      });
       Router.go('Guestbook');
     },
     onError: function (formType, error) {
-      Session.set('guestbook--add_entry_form-result', { err: error.message });
+      $.notify({
+      	message: error.message,
+        icon: 'glyphicon glyphicon-warning-sign'
+      },{
+      	type: 'danger'
+      });
       Router.go('Guestbook');
     }
   }

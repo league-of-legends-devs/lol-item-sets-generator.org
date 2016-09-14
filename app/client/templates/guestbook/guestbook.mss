@@ -11,9 +11,6 @@
 .entry_add {
 }
 
-.status {
-}
-
 .entries_count {
 }
 

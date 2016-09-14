@@ -6,9 +6,6 @@
     <div>
       <h1 class="{{styles.title}}">Users reviews</h1>
       <div class="{{styles.entry_add}}"><a href="{{pathFor route='Guestbook_Add'}}">Add a review</a></div>
-      <div class="{{styles.status}}">
-        {{> GuestbookAddStatus}}
-      </div>
       <div class="{{styles.entries_count}}"><h4>{{total_entries}} reviews</h4></div>
       <div>
         {{#each entries}}
