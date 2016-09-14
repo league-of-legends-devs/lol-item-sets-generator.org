@@ -33,7 +33,6 @@ Template.Build.helpers({
     }
     const latestSetsId = build.latestItemSetsId.valueOf();
     const itemSetsId = owningItemSets && owningItemSets._id.valueOf();
-    console.log(latestSetsId, itemSetsId);
     if (latestSetsId !== itemSetsId) {
       rightLinks.push({
         route: 'Build',
