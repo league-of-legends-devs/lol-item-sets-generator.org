@@ -9,7 +9,7 @@ Download the best -generated- League of Legends recommended items.
 ## Reporting a bug
 
 * Bug on the **website** : [submit here](https://github.com/Ilshidur/lol-item-sets-generator.org/issues/new)
-* Bug on the **item sets** : [submit here](https://github.com/Ilshidur/lol-item-sets-builder/issues/new)
+* Bug on the **item sets** : [submit here](https://github.com/Ilshidur/feeder.lol-item-sets-generator.org/issues/new)
 
 ## Build
 
