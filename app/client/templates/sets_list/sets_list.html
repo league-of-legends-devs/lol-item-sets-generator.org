@@ -11,9 +11,9 @@
                   {{#each itemSet in champsSets.sets}}
                     <div class="{{styles.itemSet}} col-lg-1 col-md-1 col-sm-2 col-xs-2">
                       <a href="{{pathFor route='Build' _param1=(getIdFromObjectId sets._id) _param2=itemSet.index}}" class="{{styles.itemSetLink}}">
-                        <p class="{{styles.itemSetRole}}">{{itemSet.set.role}}</p>
+                        <span class="{{styles.itemSetRole}}">{{itemSet.set.role}}</span>
                         <div class="{{styles.spriteContainer}}">
-                          <div class="{{styles.champSprite}} {{itemSet.set.champion}}" style="background-image: url('https://feeder.lol-item-sets-generator.org/sprites/sprite.png?v={{sets.patchVersion}}'); background-position: calc(100% * {{itemSet.championNumber}} / {{champsSets.total}}) 0; background-size: calc(({{champsSets.total}} + 1) * 100%) 100%;"></div>
+                          <div class="{{styles.champSprite}}" style="background-image: url('https://feeder.lol-item-sets-generator.org/sprites/sprite.png?v={{sets.patchVersion}}'); background-position: calc(100% * {{itemSet.championNumber}} / {{champsSets.total}}) 0; background-size: calc(({{champsSets.total}} + 1) * 100%) 100%;"></div>
                         </div>
                       </a>
                     </div>
