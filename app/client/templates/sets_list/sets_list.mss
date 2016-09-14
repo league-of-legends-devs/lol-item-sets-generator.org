@@ -52,8 +52,6 @@
 }
 
 .champSprite {
-  background-image: url('https://feeder.lol-item-sets-generator.org/sprites/sprite.png');
-
   /* from : http://stackoverflow.com/a/28985475/4022804 */
   position: absolute;
   top: 0;
