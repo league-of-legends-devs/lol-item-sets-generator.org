@@ -43,6 +43,11 @@ Template.Build.helpers({
         }
       });
     }
+    rightLinks.push({
+      template: 'ButtonEditBuild',
+      data: {
+      }
+    });
     return {
       left: leftLinks,
       right: rightLinks
