@@ -18,7 +18,6 @@ Template.SetsList.helpers({
     return objectId.valueOf();
   },
   shownItemSets: function () {
-    console.log(this);
     return this.itemSets.sets;
   },
   filterSets: function (sets) {
