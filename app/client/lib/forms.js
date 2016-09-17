@@ -3,7 +3,7 @@ AutoForm.hooks({
     onSuccess: function (formType, result) {
       $.notify({
       	message: 'Thank you ! Your entry will be shown after the admin validated it.',
-        icon: 'glyphicon glyphicon-warning-sign'
+        icon: 'glyphicons glyphicons-ok'
       },{
       	type: 'success'
       });
