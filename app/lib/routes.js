@@ -291,9 +291,9 @@ if (Meteor.isServer) {
     fs.createReadStream(file).pipe(response);
   }
 
-  function err404 (response) {
+  function err404 (response, msg) {
     response.writeHead(404);
-    response.end('404 ! No app version found.');
+    response.end('404 ! ' + msg);
   }
 
   Router.route('/downloads/sets-from-website', function () {
@@ -308,7 +308,7 @@ if (Meteor.isServer) {
     Meteor.call('server/registerDownload', 'windows-app-from-website');
     const version = Versions.findOne({ type: 'windows-app' });
     if (!version || !version.link) {
-      err404(this.response);
+      err404(this.response, 'No app version found.');
       return;
     }
     const link = version.link;
@@ -321,7 +321,7 @@ if (Meteor.isServer) {
     Meteor.call('server/registerDownload', 'mac-app-from-website');
     const version = Versions.findOne({ type: 'mac-app' });
     if (!version || !version.link) {
-      err404(this.response);
+      err404(this.response, 'No app version found.');
       return;
     }
     const link = version.link;
@@ -330,5 +330,4 @@ if (Meteor.isServer) {
     });
     this.response.end();
   }, { where: 'server' });
-  
 }
