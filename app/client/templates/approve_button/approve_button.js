@@ -1,3 +1,5 @@
+import styles from './approve_button.mss';
+
 /*****************************************************************************/
 /* ApproveButton: Event Handlers */
 /*****************************************************************************/
@@ -6,8 +8,20 @@ Template.ApproveButton.events({
     var docId = $(e.target).data('id');
     Meteor.call('server/approveEntry', docId, (err, result) => {
       if (err) {
-        alert(err);
+        $.notify({
+        	message: err,
+          icon: 'glyphicon glyphicon-warning-sign'
+        },{
+        	type: 'danger'
+        });
+        return;
       }
+      $.notify({
+        message: 'Approved !',
+        icon: 'glyphicons glyphicons-ok'
+      },{
+        type: 'success'
+      });
     });
   }
 });
@@ -16,6 +30,7 @@ Template.ApproveButton.events({
 /* ApproveButton: Helpers */
 /*****************************************************************************/
 Template.ApproveButton.helpers({
+  styles: styles,
   isApproved: function () {
     return this.value;
   },
