@@ -6,7 +6,7 @@ DownloadsSchema = new SimpleSchema({
     label: 'Type',
     max: 64,
     unique: true,
-    allowedValues: ['sets-from-website', 'sets-from-app', 'windows-app-from-website', 'mac-app-from-website']
+    allowedValues: ['sets-from-website', 'sets-from-app', 'windows-app-from-website', 'mac-app-from-website', 'set-from-website']
   },
   count: {
     type: Number,

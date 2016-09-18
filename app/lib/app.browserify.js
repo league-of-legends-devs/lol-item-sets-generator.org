@@ -1,0 +1,1 @@
+fileSaver = require('file-saver');

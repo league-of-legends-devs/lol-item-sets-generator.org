@@ -1,13 +1,13 @@
 <template name="ItemSet">
   <div class="{{styles.item_set}}">
     <div class="{{styles.itemBlocks}}">
-      {{#unless (getItemSetOfSet shownSet)}}
+      {{#unless itemSet}}
         {{> Redirect}}
       {{else}}
-        {{#let set=shownSet itemSet=(getItemSetOfSet shownSet)}}
+        {{#let set=itemSets itemSet=itemSet}}
           <div class="{{styles.description}} row">
             <div class="col-md-4 col-sm-4 col-xs-4">
-              <img src="{{championImage set.patchVersion itemSet.champion}}" alt="{{itemSet.champion}}" class="{{styles.champImage}} img-responsive img-center center-block">
+              <img src="{{championImage}}" alt="{{itemSet.champion}}" class="{{styles.champImage}} img-responsive img-center center-block">
             </div>
             <div class="{{styles.descriptionContent}} col-md-8 col-sm-8 col-xs-8">
               <p class="{{styles.title}}">{{itemSet.champion}} - {{itemSet.role}}</p>
@@ -25,7 +25,7 @@
               <div>
                 {{#each item in block.items}}
                   <div class="{{styles.item}} col-md-1 col-sm-2 col-xs-3">
-                    <img src="{{itemImage set.patchVersion item.id}}" alt="item.id" class="{{styles.itemImage}} img-responsive img-thumbnail">
+                    <img src="{{itemImage item.id}}" alt="item.id" class="{{styles.itemImage}} img-responsive img-thumbnail">
                   </div>
                 {{/each}}
               </div>
@@ -33,7 +33,7 @@
           {{/each}}
           <div class="row">
             <div class="col-md-4 col-md-offset-8">
-              <button class="{{styles.download}} btn btn-primary btn-success disabled"><i class="fa fa-download" aria-hidden="true"></i> Download (not available yet)</button>
+              <button id="itemSet--downloadButton" class="{{styles.download}} btn btn-primary btn-success"><i class="fa fa-download" aria-hidden="true"></i> Download the item set</button>
             </div>
           </div>
         {{/let}}

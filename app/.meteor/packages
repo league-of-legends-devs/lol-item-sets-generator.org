@@ -43,6 +43,9 @@ accounts-twitter
 alanning:roles
 
 ## Misc modules
+meteorhacks:npm
+npm-container
+cosmos:browserify
 meteorhacks:fast-render
 multiply:iron-router-progress
 pcel:loading
