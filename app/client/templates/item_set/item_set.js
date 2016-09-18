@@ -26,7 +26,7 @@ Template.ItemSet.events({
     };
     const blob = new Blob([JSON.stringify(fileContent, ' ', 2)], { type: 'text/json;charset=utf-8' });
     fileSaver.saveAs(blob, `${patch} ${champion} ${role}.json`);
-    Meteor.call('server/registerDownload', 'set-from-website', (err) => {
+    Meteor.call('server/registerItemSetDownload', this.itemSet.itemSet._id.valueOf(), (err) => {
       if (err) {
         $.notify({
           message: err,

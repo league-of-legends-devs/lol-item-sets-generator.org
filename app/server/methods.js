@@ -46,6 +46,19 @@ Meteor.methods({
     } else {
       Downloads.update({ type: type }, { $inc: { count: 1 } });
     }
+  },
+  'server/registerItemSetDownload': function (buildId) {
+    this.unblock();
+    if (!ItemSetDownloads.findOne({ buildId: buildId })) {
+      const doc = {
+        buildId: buildId,
+        count: 1
+      };
+      check(doc, ItemSetDownloadsSchema);
+      ItemSetDownloads.insert(doc);
+    } else {
+      ItemSetDownloads.update({ buildId: buildId }, { $inc: { count: 1 } });
+    }
   }/*,
   'server/getConfig': function (configName) {
     this.unblock();
