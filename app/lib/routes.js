@@ -1,5 +1,5 @@
-const title = 'LoL item sets generator';
-const description = 'Download the best -generated- League of Legends recommended items.';
+const title = AppConfig.appName;
+const description = AppConfig.appDescription;
 
 // TODO: Migrate the routes config to their Controllers
 // TODO: Use reactive states instead of Session vars
