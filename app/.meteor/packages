@@ -27,6 +27,7 @@ fortawesome:fontawesome
 aldeed:autoform
 erasaur:meteor-lodash
 joshowens:shareit
+mouse0270:bootstrap-notify
 
 ## Server libs
 iron:router
@@ -64,4 +65,3 @@ msavin:jetsetter
 ## SEO
 gadicohen:sitemaps
 lookback:seo
-mouse0270:bootstrap-notify
