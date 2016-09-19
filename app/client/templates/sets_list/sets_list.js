@@ -22,13 +22,13 @@ Template.SetsList.helpers({
   },
   filterSets: function (sets) {
     const filter = this.filter.get();
-    const sortedSets = _.sortBy(sets, 'champion');
+    const sortedSets = lodash.sortBy(sets, 'champion');
     // Define the ID of the item set (for the item set route)
-    const indexedSets = _.map(sortedSets, (s, i) => { return { index: i + 1, set: s }; });
+    const indexedSets = lodash.map(sortedSets, (s, i) => { return { index: i + 1, set: s }; });
     let number = -1;
     let lastChampion = '';
     // Assign an incrementiel number for each champion
-    const numberedChampsSets = _.map(indexedSets, s => {
+    const numberedChampsSets = lodash.map(indexedSets, s => {
       if (lastChampion != s.set.champion) {
         number++;
         lastChampion = s.set.champion;
