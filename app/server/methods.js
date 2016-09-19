@@ -59,6 +59,7 @@ Meteor.methods({
     } else {
       ItemSetDownloads.update({ buildId: buildId }, { $inc: { count: 1 } });
     }
+    Meteor.call('server/registerDownload', 'set-from-website');
   }/*,
   'server/getConfig': function (configName) {
     this.unblock();
