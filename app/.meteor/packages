@@ -26,6 +26,7 @@ momentjs:moment
 fortawesome:fontawesome
 aldeed:autoform
 erasaur:meteor-lodash
+joshowens:shareit
 
 ## Server libs
 iron:router

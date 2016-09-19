@@ -50,6 +50,19 @@ Template.ItemSet.events({
 /*****************************************************************************/
 Template.ItemSet.helpers({
   styles: styles,
+  shareData: function () {
+    const champion = this.itemSet.itemSet.champion;
+    const role = this.itemSet.itemSet.role;
+    const patch = this.itemSet.itemSets.patchVersion;
+    const author = this.itemSet.itemSet.author || 'LoL Item Sets Generator'
+    const appDescription = AppConfig.appDescription;
+    return {
+      title: `${champion} ${role} - patch ${patch}`,
+      author: author,
+      description: ` ${appDescription}`,
+      url: Iron.Location.get().originalUrl
+    };
+  },
   itemSets: function () {
     return this.itemSet.itemSets;
   },

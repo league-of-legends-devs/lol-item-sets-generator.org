@@ -31,8 +31,11 @@
           </div>
         {{/each}}
         <div class="row">
-          <div class="col-md-4 col-md-offset-8">
-            <button id="itemSet--downloadButton" class="{{styles.download}} btn btn-primary btn-success"><i class="fa fa-download" aria-hidden="true"></i> Download the item set</button>
+          <div class="{{styles.bottom_section}} col-lg-8">
+            {{> shareit shareData}}
+          </div>
+          <div class="{{styles.bottom_section}} col-lg-4">
+            <button id="itemSet--downloadButton" class="{{styles.download}} btn btn-primary btn-success text-uppercase"><i class="fa fa-download" aria-hidden="true"></i> Download the item set</button>
           </div>
         </div>
       {{/unless}}

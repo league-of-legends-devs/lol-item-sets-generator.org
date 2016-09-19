@@ -2,6 +2,9 @@
   "public": {
     "analyticsSettings": {
       "Google Analytics" : {"trackingId": "UA-62226552-1"}
+    },
+    "facebook": {
+      "appId": "909111165861047"
     }
   }
 }

@@ -41,6 +41,10 @@
 .itemImage {
 }
 
+.bottom_section {
+  padding: 5px;
+}
+
 .download {
   width: 100%;
   height: 100%;
