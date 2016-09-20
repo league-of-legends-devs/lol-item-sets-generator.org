@@ -13,6 +13,33 @@ AdminConfig = {
   adminEmails: adminEmails,
 
   collections: {
+    Champions: {
+      icon: 'database',
+      color: 'yellow',
+      showEditColumn: false,
+      showDelColumn: false,
+      tableColumns: [
+        { label: 'Index', name: 'index' },
+        { label: 'Riot ID', name: 'id' },
+        { label: 'Key', name: 'key' },
+        { label: 'Name', name: 'name' },
+        { label: 'Patch version', name: 'importPatch' },
+        { label: 'Import date', name: 'importDate', template: 'FormatedDate' }
+      ]
+    },
+    Items: {
+      icon: 'database',
+      color: 'yellow',
+      showEditColumn: false,
+      showDelColumn: false,
+      tableColumns: [
+        { label: 'Index', name: 'index' },
+        { label: 'Riot ID', name: 'id' },
+        { label: 'Name', name: 'name' },
+        { label: 'Patch version', name: 'importPatch' },
+        { label: 'Import date', name: 'importDate', template: 'FormatedDate' }
+      ]
+    },
     ItemSets: {
       icon: 'puzzle-piece',
       color: 'purple',
