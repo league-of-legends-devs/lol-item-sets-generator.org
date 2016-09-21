@@ -33,7 +33,7 @@
   z-index: 10;
   width: 100%;
   height: 20px;
-  top: 0;
+  bottom: 0;
   left: 0;
   margin: 0;
 }
@@ -59,4 +59,20 @@
   bottom: 0;
   right: 0;
   text-align: center;
+}
+
+.champSprite .champName {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  text-align: center;
+  background-color: rgba(56, 56, 56, 0.6);
+  -webkit-box-shadow: 0px 0px 8px 5px rgba(56, 56, 56, 0.6);
+  -moz-box-shadow: 0px 0px 8px 5px rgba(56, 56, 56, 0.6);
+  box-shadow: 0px 0px 8px 5px rgba(56, 56, 56, 0.6);
+  padding: 3px 8px;
 }
