@@ -16,10 +16,12 @@
 
 .itemSetLink {
   background-color: rgba(195, 176, 164, 0.6);
+  color: white;
 }
 
 .itemSetLink:hover {
   background-color: rgba(214, 86, 5, 0.6);
+  color: rgb(227, 172, 137);
 }
 
 .itemSetRole {
@@ -65,7 +67,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  color: white;
+  color: inherit;
   font-size: 14px;
   font-weight: bold;
   line-height: 20px;
