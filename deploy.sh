@@ -12,7 +12,7 @@ cd `dirname $0`
 
 printf "`date +%Y-%m-%d` : Trying ...\n" >> deploy.log
 
-# TODO: Check if Meteor is installed
+if [ ! -e "$HOME/.meteor/meteor" ]; then curl https://install.meteor.com | sed s/--progress-bar/-sL/g | /bin/sh; fi
 
 #iron-meteor
 echo "Cheking iron-meteor ..."
