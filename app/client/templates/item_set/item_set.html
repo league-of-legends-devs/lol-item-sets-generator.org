@@ -35,7 +35,7 @@
             {{> shareit shareData}}
           </div>
           <div class="{{styles.bottom_section}} col-lg-4">
-            <button id="itemSet--downloadButton" class="{{styles.download}} btn btn-primary btn-success text-uppercase"><i class="fa fa-download" aria-hidden="true"></i> Download the item set</button>
+            {{> ButtonDownloadItemSet itemSet=itemSet patchVersion=itemSets.patchVersion class=styles.download author=itemSet.author}}
           </div>
         </div>
       {{/unless}}

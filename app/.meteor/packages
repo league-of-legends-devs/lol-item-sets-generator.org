@@ -30,6 +30,7 @@ aldeed:autoform
 erasaur:meteor-lodash
 joshowens:shareit
 mouse0270:bootstrap-notify
+barbatus:stars-rating
 
 ## Server libs
 iron:router
@@ -39,6 +40,7 @@ meteorhacks:unblock
 aldeed:collection2
 dburles:collection-helpers
 jparker:crypto-md5
+audit-argument-checks
 
 ## Accounts
 accounts-ui
@@ -67,3 +69,7 @@ msavin:jetsetter
 ## SEO
 gadicohen:sitemaps
 lookback:seo
+
+easy:search
+easysearch:autosuggest
+sacha:spin

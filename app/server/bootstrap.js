@@ -10,8 +10,7 @@ Meteor.startup(function () {
     if (Meteor.users.find().count() === 0) {
       user.roles = ['admin'];
     }
-    console.log(user);
     return user;
   });
-  
+
 });

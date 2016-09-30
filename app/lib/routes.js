@@ -143,6 +143,22 @@ Router.route('/sets', {
   },
   fastRender: true
 });
+Router.route('/sets/custom', {
+  layoutTemplate: 'MasterLayout',
+  name: 'CustomSets',
+  template: 'CustomSets',
+  controller: 'CustomSetsController',
+  where: 'client',
+  data: function () {
+    // CustomItemSets
+  },
+  seo: {
+    title: function () {
+      return `Custom sets | ${title}`;
+    }
+  },
+  fastRender: true
+});
 Router.route('/sets/:_id', {
   layoutTemplate: 'MasterLayout',
   name: 'SetsId',
@@ -166,9 +182,7 @@ Router.route('/sets/:_id', {
   },
   seo: {
     title: function () {
-      const routeData = Session.get('routeData') || {};
-      const itemSets = routeData ? routeData.itemSets : undefined;
-      const setsId = itemSets ? itemSets.id : 'error';
+      const setsId = this.params._id || 'error';
       return `Items sets #${setsId} | ${title}`;
     }
   },
@@ -234,8 +248,7 @@ Router.route('/sets/:_param1/:_param2', {
   },
   seo: {
     title: function () {
-      const errorTitle = title;
-      const routeData = Session.get('routeData') || {};
+      const routeData = this.data() || {};
       const build = routeData.build;
       if (!build) {
         return errorTitle;
@@ -243,6 +256,49 @@ Router.route('/sets/:_param1/:_param2', {
       const itemSets = build.itemSets;
       const itemSet = build.itemSet;
       return `${itemSet.champion} - ${itemSet.role} (${itemSets.patchVersion}) #${build.id}/${build.number} | ${title}`;
+    }
+  },
+  fastRender: true
+});
+
+Router.route('/edit', {
+  layoutTemplate: 'MasterLayout',
+  name: 'Edit',
+  template: 'Edit',
+  controller: 'EditController',
+  where: 'client',
+  seo: {
+    title: function () {
+      return `Edit | ${title}`;
+    }
+  },
+  fastRender: true
+});
+Router.route('/edit/:_param1/:_param2', {
+  layoutTemplate: 'MasterLayout',
+  name: 'EditSet',
+  template: 'Edit',
+  controller: 'EditSetController',
+  where: 'client',
+  data: function () {
+    let routeData = Session.get('routeData') || {};
+
+    Session.set('routeData', routeData);
+    return routeData;
+  },
+  seo: {
+    title: function () {
+      const errorTitle = title;
+      const routeData = this.data() || {};
+      // TODO
+      // const build = routeData.build;
+      // if (!build) {
+      //   return errorTitle;
+      // }
+      // const itemSets = build.itemSets;
+      // const itemSet = build.itemSet;
+      // return `${itemSet.champion} - ${itemSet.role} (${itemSets.patchVersion}) #${build.id}/${build.number} | ${title}`;
+      return `Edit | ${title}`;
     }
   },
   fastRender: true

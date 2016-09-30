@@ -40,6 +40,16 @@ AdminConfig = {
         { label: 'Import date', name: 'importDate', template: 'FormatedDate' }
       ]
     },
+    PatchVersions: {
+      icon: 'database',
+      color: 'yellow',
+      showEditColumn: false,
+      showDelColumn: false,
+      tableColumns: [
+        { label: 'Patch version', name: 'patchVersion' },
+        { label: 'Import date', name: 'importDate', template: 'FormatedDate' }
+      ]
+    },
     ItemSets: {
       icon: 'puzzle-piece',
       color: 'purple',
@@ -49,6 +59,20 @@ AdminConfig = {
         { label: 'ID', name: '_id' },
         { label: 'Version', name: 'patchVersion' },
         { label: 'Date', name: 'generationDate', template: 'FormatedDate' }
+      ]
+    },
+    CustomItemSets: {
+      icon: 'puzzle-piece',
+      color: 'purple',
+      showEditColumn: true,
+      showDelColumn: true,
+      tableColumns: [
+        { label: 'Title', name: 'title' },
+        { label: 'Champion', name: 'champion' },
+        { label: 'Role', name: 'role' },
+        { label: 'Author', name: 'author' },
+        { label: 'Total rating', name: 'totalRating' },
+        { label: 'Date', name: 'creationDate', template: 'FormatedDate' }
       ]
     },
     Versions: {

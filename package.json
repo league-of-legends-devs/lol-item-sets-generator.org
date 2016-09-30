@@ -29,5 +29,9 @@
   "bugs": {
     "url": "https://github.com/Ilshidur/lol-item-sets-generator.org/issues"
   },
-  "homepage": "https://github.com/Ilshidur/lol-item-sets-generator.org"
+  "homepage": "https://github.com/Ilshidur/lol-item-sets-generator.org",
+  "cssModules": {
+    "extensions": ["mss", "m.css"],
+    "enableSassCompilation": ["scss", "sass"]
+  }
 }

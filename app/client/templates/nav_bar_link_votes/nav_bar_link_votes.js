@@ -1,26 +1,26 @@
-import styles from './button_edit_build.mss';
+import styles from './nav_bar_link_votes.mss';
 
 /*****************************************************************************/
-/* ButtonEditBuild: Event Handlers */
+/* NavBarLinkVotes: Event Handlers */
 /*****************************************************************************/
-Template.ButtonEditBuild.events({
+Template.NavBarLinkVotes.events({
 });
 
 /*****************************************************************************/
-/* ButtonEditBuild: Helpers */
+/* NavBarLinkVotes: Helpers */
 /*****************************************************************************/
-Template.ButtonEditBuild.helpers({
+Template.NavBarLinkVotes.helpers({
   styles: styles
 });
 
 /*****************************************************************************/
-/* ButtonEditBuild: Lifecycle Hooks */
+/* NavBarLinkVotes: Lifecycle Hooks */
 /*****************************************************************************/
-Template.ButtonEditBuild.onCreated(function () {
+Template.NavBarLinkVotes.onCreated(function () {
 });
 
-Template.ButtonEditBuild.onRendered(function () {
+Template.NavBarLinkVotes.onRendered(function () {
 });
 
-Template.ButtonEditBuild.onDestroyed(function () {
+Template.NavBarLinkVotes.onDestroyed(function () {
 });

@@ -27,3 +27,8 @@ Meteor.publish('TwitterAnnouncements.last', function () {
   this.unblock();
   return TwitterAnnouncements.find({}, { sort: { creationDate: -1 }, limit: 1 });
 });
+
+Meteor.publish('PatchVersions.limit', function () {
+  this.unblock();
+  return PatchVersions.find({}, { sort: { patchVersion: -1 }, limit: 10 }, { reactive: false });
+});
