@@ -4,23 +4,26 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-base@1.0.4             # Packages every Meteor app needs to have
-mobile-experience@1.0.4       # Packages for a great mobile UX
-mongo@1.1.12                   # The database Meteor supports right now
-blaze-html-templates@1.0.4    # Compile .html files into Meteor Blaze views
-session@1.1.6                 # Client-side reactive dictionary for your app
-jquery@1.11.9                  # Helpful client-side library
-tracker@1.1.0                 # Meteor's client-side reactive programming library
+meteor-base                     # Packages every Meteor app needs to have
+mobile-experience               # Packages for a great mobile UX
+mongo                           # The database Meteor supports right now
+blaze-html-templates            # Compile .html files into Meteor Blaze views
+session                         # Client-side reactive dictionary for your app
+jquery                          # Helpful client-side library
+tracker                         # Meteor's client-side reactive programming library
 
-es5-shim@4.6.14                # ECMAScript 5 compatibility for older browsers.
-ecmascript@0.5.8              # Enable ECMAScript2015+ syntax in app code
+es5-shim                        # ECMAScript 5 compatibility for older browsers.
+ecmascript                      # Enable ECMAScript2015+ syntax in app code
 
-reactive-var@1.0.10
+reactive-var
+
+#shell-server
 
 ## Client Libs
 meteorhacks:subs-manager
 twbs:bootstrap
 fourseven:scss
+nathantreid:css-modules@1.2.0
 momentjs:moment
 fortawesome:fontawesome
 aldeed:autoform
@@ -30,17 +33,17 @@ mouse0270:bootstrap-notify
 
 ## Server libs
 iron:router
-check@1.2.3
-underscore@1.0.9
+check
+underscore
 meteorhacks:unblock
 aldeed:collection2
 dburles:collection-helpers
 jparker:crypto-md5
 
 ## Accounts
-accounts-ui@1.1.9
-accounts-base@1.2.11
-accounts-twitter@1.1.11
+accounts-ui
+accounts-base
+accounts-twitter
 alanning:roles
 
 ## Misc modules
@@ -50,8 +53,8 @@ cosmos:browserify
 meteorhacks:fast-render
 multiply:iron-router-progress
 pcel:loading
-standard-minifier-css@1.2.0
-standard-minifier-js@1.2.0
+standard-minifier-css
+standard-minifier-js
 
 ## Webmin & dev tools
 meteorhacks:kadira
@@ -64,5 +67,3 @@ msavin:jetsetter
 ## SEO
 gadicohen:sitemaps
 lookback:seo
-shell-server
-nathantreid:css-modules@1.2.0
