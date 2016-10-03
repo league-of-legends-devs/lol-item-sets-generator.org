@@ -57,6 +57,10 @@
   padding: 3px 8px;
 }
 
+.browse_sets a:hover {
+  background-color: rgba(56, 56, 56, 0.5);
+}
+
 .download {
   margin-top: 30px;
 }
