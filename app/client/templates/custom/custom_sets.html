@@ -29,11 +29,11 @@
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
             <select id="patchFilter" class="form-control">
               {{#each patch in patchVersions}}
-                {{#if @index=0}}
+                {{#unless @index}}
                   <option selected value="{{patch.patchVersion}}">{{patch.patchVersion}}</option>
                 {{else}}
                   <option value="{{patch.patchVersion}}">{{patch.patchVersion}}</option>
-                {{/if}}
+                {{/unless}}
               {{/each}}
             </select>
           </div>
