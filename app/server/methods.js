@@ -7,7 +7,7 @@
 Meteor.methods({
   'server/postEntry': function (doc) {
     this.unblock();
-    check(doc, GuestbookEntriesFormSchema);
+    GuestbookEntriesFormSchema.validate(doc);
     const user = Meteor.users.findOne({ _id: this.userId });
     if (!user.services.twitter) {
       throw new Meteor.Error(401, `You can't post if you are not authenticated with Twitter.`, `Can't post if not authenticated`);
@@ -25,12 +25,13 @@ Meteor.methods({
     doc.approved = false;
     // TODO: check
     // check(doc, GuestbookEntries.simpleSchema());
-    this.unblock();
     GuestbookEntries.insert(doc);
   },
   'server/approveEntry': function (entryId) {
     this.unblock();
-    check(entryId, String);
+    new SimpleSchema({
+      entryId: { type: String }
+    }).validate({ entryId });
     const user = Meteor.users.findOne({ _id: this.userId });
     if (!Roles.userIsInRole(user, ['admin'])) {
       throw new Meteor.Error(401, `You can't approve an entry if you're not an admin.`, `Can't approve if not admin`);
@@ -39,7 +40,9 @@ Meteor.methods({
   },
   'server/registerDownload': function (type) {
     this.unblock();
-    check(type, String);
+    new SimpleSchema({
+      type: { type: String }
+    }).validate({ type });
     if (!Downloads.findOne({ type: type })) {
       const doc = {
         type: type,
@@ -53,7 +56,9 @@ Meteor.methods({
   },
   'server/registerItemSetDownload': function (buildId) {
     this.unblock();
-    check(buildId, String);
+    new SimpleSchema({
+      buildId: { type: String }
+    }).validate({ buildId });
     if (!ItemSetDownloads.findOne({ buildId: buildId })) {
       const doc = {
         buildId: buildId,
@@ -68,7 +73,9 @@ Meteor.methods({
   },
   'server/getConfig': function (configName) {
     this.unblock();
-    check(configName, String);
+    new SimpleSchema({
+      configName: { type: String }
+    }).validate({ configName });
     const result = Config.findOne({ id: configName, location: { $in: ['both', 'client'] } });
     if (!result) {
       throw new Meteor.Error(404, 'Config not found.', 'Not found.');
@@ -77,8 +84,10 @@ Meteor.methods({
   },
   'server/rateCustomItemSet': function (buildId, rating) {
     this.unblock();
-    check(buildId, String);
-    check(rating, Number);
+    new SimpleSchema({
+      buildId: { type: String },
+      rating: { type: Number }
+    }).validate({ buildId, rating});
     check(this.userId, String);
     if (rating < 0 || rating > 5)  {
       throw new Meteor.Error(422, `Rating exceeded allowed range.`, `Invalid parameter`);
