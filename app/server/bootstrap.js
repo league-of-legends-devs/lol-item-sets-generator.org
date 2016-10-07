@@ -1,5 +1,14 @@
 Meteor.startup(function () {
 
+  console.log(`Starting on port ${process.env.PORT} ...`);
+
+  var originalFunc = Spiderable._urlForPhantom;
+  Spiderable._urlForPhantom = function (siteAbsoluteUrl, requestUrl) {
+    var url = originalFunc(`http://localhost:${process.env.PORT}/`, requestUrl);
+    console.log(`Resolved Spiderable request ${requestUrl} to ${url}.`);
+    return url;
+  };
+
   Accounts.onCreateUser(function (options, user) {
     console.log(user);
     user.profile = user.profile || {};
