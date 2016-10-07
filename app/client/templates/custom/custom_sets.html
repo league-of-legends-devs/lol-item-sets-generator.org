@@ -55,7 +55,8 @@
         {{/EasySearch.IfSearching}}
         {{#EasySearch.IfNoResults index=customItemSetsIndex}}
           <div class="{{styles.notFound}} text-center">
-            <p>No results found.</p>
+            <p>No sets found.</p>
+            <small><a href="{{pathFor route='Edit'}}">Post your own build</a></small>
           </div>
         {{/EasySearch.IfNoResults}}
         <div class="text-center">
@@ -96,7 +97,7 @@
                           {{#if currentUser}}
                             <span>Your rating on this build :</span>
                             {{> starsRating id=(formatRatingId (getIdFromObjectId itemSet.__originalId)) class=styles.itemSet__ratingButton mutable=true size=30 rating=(getRating itemSet)}}
-                            <button type="button" id="{{formatRatingId (getIdFromObjectId itemSet.__originalId)}}__button" class="{{styles.itemSet__ratingButton}} itemSet__ratingButton" data-id="{{getIdFromObjectId itemSet.__originalId}}">Submit rating</button>
+                            <button type="button" id="{{formatRatingId (getIdFromObjectId itemSet.__originalId)}}__button" class="{{styles.itemSet__ratingButton}} itemSet__ratingButton" data-id="{{getIdFromObjectId itemSet.__originalId}}">Submit</button>
                           {{else}}
                             <p>You must login to rate this build.</p>
                           {{/if}}
