@@ -29,6 +29,24 @@ ChampionsSchema = new SimpleSchema({
 
 Champions.attachSchema(ChampionsSchema);
 
+ChampionsIndex = new EasySearch.Index({
+  collection: Champions,
+  fields: [
+    'id',
+    'name'
+  ],
+  engine: new EasySearch.MongoDB({
+    sort: function (searchObject, options) {
+      return {
+        name: 1
+      };
+    }
+  }),
+  defaultSearchOptions: {
+    limit: 200
+  }
+});
+
 if (Meteor.isServer) {
   Champions.allow({
     insert: function (userId, doc) {

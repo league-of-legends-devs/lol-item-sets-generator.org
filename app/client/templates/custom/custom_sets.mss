@@ -97,6 +97,10 @@
   height: 100%;
 }
 
+.itemSet .reportContainer {
+  float: right;
+}
+
 .itemSet .itemsList {
 }
 

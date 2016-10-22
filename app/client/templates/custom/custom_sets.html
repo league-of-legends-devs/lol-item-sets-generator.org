@@ -6,12 +6,11 @@
     <div>
       <h1 class="{{styles.title}} text-center">Custom sets</h1>
       <div class="{{styles.content}}">
-        <div class="alert alert-danger alert-dismissible" role="alert">
+        <div class="alert alert-warning alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <p><strong>NEW !</strong>
             The players can create/edit their own item sets and vote for the best one.
             The best item sets will be added to the generated ones and used by all the community !
-            <strong>(this feature will be available soon ...)</strong>
           </p>
         </div>
         <div class="{{styles.searchInput}} text-center row">
@@ -82,7 +81,7 @@
                     <div class="panel-body clearfix">
                       <div class="col-lg-4 col-md-4 col-sm-5">
                         <div class="row">
-                          <img src="{{championImage itemSet.patchVersion itemSet.champion}}" alt="{{itemSet.champion}}" class="{{styles.champImage}} img-responsive col-lg-12 col-xs-4">
+                          <img src="{{championImage itemSet.patchVersion itemSet.champion}}" alt="{{itemSet.champion}}" class="{{styles.champImage}} league-tooltip img-responsive col-lg-12 col-xs-4" data-champion="{{itemSet.champion}}">
                           <div class="col-lg-12 col-xs-8">
                             <h3 class="{{styles.champNameRole}} text-uppercase">{{itemSet.champion}} - {{itemSet.role}}</h3>
                             <p class="{{styles.author}}">by <strong>{{itemSet.author}}</strong></p>
@@ -104,13 +103,16 @@
                         </div>
                       </div>
                       <div class="{{styles.itemSetContent}} col-lg-8 col-md-8 col-sm-7">
+                        <div class="{{styles.reportContainer}}">
+                          <a href="#" class="itemSet__reportLink">Report this build</a>
+                        </div>
                         <div class="{{styles.itemsList}}">
                           {{#each block in this.itemBlocks}}
                             <div class="{{styles.block}}">
                               <span class="{{styles.blockTitle}}">{{block.type}}</span>
                               <div class="{{styles.blockItems}}">
                                 {{#each item in block.items}}
-                                  <img src="{{itemImage itemSet.patchVersion item.id}}" alt="Item {{item.id}}" class="{{styles.item}} img-responsive">
+                                  <img src="{{itemImage itemSet.patchVersion item.id}}" alt="Item {{item.id}}" class="{{styles.item}} league-tooltip img-responsive" data-item="{{item.id}}">
                                 {{/each}}
                               </div>
                             </div>

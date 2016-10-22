@@ -9,6 +9,12 @@ Meteor.startup(function () {
     return url;
   };
 
+  // WebApp.rawConnectHandlers.use(function(req, res, next) {
+  //   res.setHeader("Access-Control-Allow-Origin", "*");
+  //   console.log('ok');
+  //   return next();
+  // });
+
   Accounts.onCreateUser(function (options, user) {
     console.log(user);
     user.profile = user.profile || {};

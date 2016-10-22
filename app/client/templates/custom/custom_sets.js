@@ -20,6 +20,10 @@ Template.CustomSets.events({
       }
     });
   },
+  'click .itemSet__reportLink': function (e) {
+    e.preventDefault();
+
+  },
   'change #sorting': function (e) {
     CustomItemSetsIndex
       .getComponentMethods()
@@ -76,7 +80,7 @@ Template.CustomSets.helpers({
   },
   formatRatingId: buildId => 'rating-' + buildId,
   getRating: (itemSet) => {
-    return lodash.head(itemSet.ratings).rating;
+    return lodash.head(itemSet.ratings || []).rating || 0;
   }
 });
 

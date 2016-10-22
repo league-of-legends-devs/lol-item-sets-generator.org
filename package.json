@@ -2,8 +2,6 @@
   "name": "lol-item-sets-generator.org",
   "version": "1.0.0",
   "description": "https://lol-item-sets-generator.org",
-  "dependencies": {
-  },
   "devDependencies": {
     "babel-eslint": "^6.1.0",
     "eslint": "^3.4.0",
@@ -31,7 +29,14 @@
   },
   "homepage": "https://github.com/Ilshidur/lol-item-sets-generator.org",
   "cssModules": {
-    "extensions": ["mss", "m.css"],
-    "enableSassCompilation": ["scss", "sass"]
-  }
+    "extensions": [
+      "mss",
+      "m.css"
+    ],
+    "enableSassCompilation": [
+      "scss",
+      "sass"
+    ]
+  },
+  "dependencies": {}
 }

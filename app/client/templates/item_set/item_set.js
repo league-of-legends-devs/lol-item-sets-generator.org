@@ -30,6 +30,10 @@ Template.ItemSet.helpers({
   itemSet: function (set) {
     return this.itemSet.itemSet;
   },
+  championSplashArt: function () {
+    const champion = this.itemSet.itemSet.champion;
+    return `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion}_0.jpg`;
+  },
   championImage: function () {
     const patch = this.itemSet.itemSets.patchVersion;
     const champion = this.itemSet.itemSet.champion;

@@ -269,7 +269,7 @@ Router.route('/edit', {
   where: 'client',
   seo: {
     title: function () {
-      return `Edit | ${title}`;
+      return `Item sets editor | ${title}`;
     }
   },
   fastRender: true
@@ -282,6 +282,33 @@ Router.route('/edit/:_param1/:_param2', {
   where: 'client',
   data: function () {
     let routeData = Session.get('routeData') || {};
+
+    if (!this.params._param1 || !this.params._param2) {
+      this.render('Redirect');
+      return;
+    }
+
+    // /id/number
+    const id = this.params._param1;
+    const number = this.params._param2;
+    const itemSets = ItemSets.findOne(new Meteor.Collection.ObjectID(id));
+    const latestItemSets = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 }, { reactive: false });
+    if (!itemSets) {
+      this.render('Redirect');
+      return;
+    }
+    const itemSet = itemSets.sets[number - 1];
+    if (!itemSet) {
+      this.render('Redirect');
+      return;
+    }
+    routeData.build = {
+      id: id,
+      number: number,
+      itemSets: itemSets,
+      itemSet: itemSet,
+      latestItemSetsId: latestItemSets._id
+    };
 
     Session.set('routeData', routeData);
     return routeData;
@@ -298,7 +325,7 @@ Router.route('/edit/:_param1/:_param2', {
       // const itemSets = build.itemSets;
       // const itemSet = build.itemSet;
       // return `${itemSet.champion} - ${itemSet.role} (${itemSets.patchVersion}) #${build.id}/${build.number} | ${title}`;
-      return `Edit | ${title}`;
+      return `Item sets editor | ${title}`;
     }
   },
   fastRender: true
@@ -383,6 +410,13 @@ if (Meteor.isServer) {
     const link = version.link;
     this.response.writeHead(302, {
       'Location': link
+    });
+    this.response.end();
+  }, { where: 'server' });
+
+  Router.route('/tooltips/:_params', function () {
+    this.response.writeHead(302, {
+      'Location': `https://lol-item-sets-generator.org/tooltips/${this.params._params}`
     });
     this.response.end();
   }, { where: 'server' });

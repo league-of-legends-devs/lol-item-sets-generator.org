@@ -25,6 +25,40 @@ ItemsSchema = new SimpleSchema({
 
 Items.attachSchema(ItemsSchema);
 
+ItemsIndex = new EasySearch.Index({
+  collection: Items,
+  fields: [
+    'id',
+    'name'
+  ],
+  engine: new EasySearch.MongoDB({
+    sort: function (searchObject, options) {
+      const sort = options.search.props.sort;
+      if (!sort) {
+        return {
+          name: 1
+        };
+      }
+      if (sort === 'ascending') {
+        return {
+          name: 1
+        };
+      } else if (sort === 'descending') {
+        return {
+          name: -1
+        };
+      } else {
+        return {
+          name: 1
+        };
+      }
+    }
+  }),
+  defaultSearchOptions: {
+    limit: 1000
+  }
+});
+
 if (Meteor.isServer) {
   Items.allow({
     insert: function (userId, doc) {
