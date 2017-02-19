@@ -19,7 +19,8 @@
       "watch": false,
       "source_map_support": true,
       "instances": 0,
-      "exec_mode": "cluster"
+      "exec_mode": "cluster",
+      "append_env_to_name": true,
     }
 
   ]
