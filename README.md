@@ -11,8 +11,8 @@ Download the best -generated- League of Legends recommended items.
 * Bug on the **website** : [submit here](https://github.com/Ilshidur/lol-item-sets-generator.org/issues/new)
 * Bug on the **item sets** : [submit here](https://github.com/Ilshidur/feeder.lol-item-sets-generator.org/issues/new)
 * Bug on the app :
- * Windows : [submit here](https://github.com/Ilshidur/LoL-item-sets/issues/new)
- * Mac : [submit here](https://github.com/Ilshidur/LoL-item-sets-Mac/issues/new)
+  * Windows : [submit here](https://github.com/Ilshidur/LoL-item-sets/issues/new)
+  * Mac : [submit here](https://github.com/Ilshidur/LoL-item-sets-Mac/issues/new)
 
 ## Build
 
