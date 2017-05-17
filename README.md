@@ -1,27 +1,30 @@
 # [LoL item sets generator](https://lol-item-sets-generator.org)
 
-<hr/>
-
-**This branch is currently a work in progress of the new version 3.0. It will be written using Node.js, React and WebSockets.
-Please refer to the [Github project](https://github.com/league-of-legends-devs/lol-item-sets-generator.org/projects/4) for more details of the upcoming changes.**
-
-<hr/>
-
 [![Slack Status](https://slack.lol-item-sets-generator.org/badge.svg)](https://slack.lol-item-sets-generator.org/)
 
 Download the best -generated- League of Legends recommended items.
+
+![preview](preview.png)
 
 ## Reporting a bug
 
 * Bug on the **website** : [submit here](https://github.com/Ilshidur/lol-item-sets-generator.org/issues/new)
 * Bug on the **item sets** : [submit here](https://github.com/Ilshidur/feeder.lol-item-sets-generator.org/issues/new)
-* Bug on the **application** :
+* Bug on the app :
   * Windows : [submit here](https://github.com/Ilshidur/LoL-item-sets/issues/new)
   * Mac : [submit here](https://github.com/Ilshidur/LoL-item-sets-Mac/issues/new)
 
 ## Build
 
-***TODO***
+Required :
+* [Node.js](https://nodejs.org) and [Meteor](https://www.meteor.com)
+* [iron-cli](https://github.com/iron-meteor/iron-cli)
+
+Steps :
+```shell
+git clone https://github.com/Ilshidur/lol-item-sets-generator.org.git
+npm start
+```
 
 ## Backers
 
@@ -31,7 +34,7 @@ Thank you for donating !
 
 ## License
 
-Copyright (c) 2017 **Nicolas COUTIN**
+Copyright (c) 2016 Ilshidur
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
