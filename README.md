@@ -3,7 +3,7 @@
 <hr/>
 
 **This branch is currently a work in progress of the new version 3.0. It will be written using Node.js, React and WebSockets.
-Please refer to the [Github project](https://github.com/orgs/league-of-legends-devs/projects/2) for more details of the upcoming changes.**
+Please refer to the [Github project](https://github.com/league-of-legends-devs/lol-item-sets-generator.org/projects/4) for more details of the upcoming changes.**
 
 <hr/>
 
