@@ -9,7 +9,7 @@ sitemaps.add('/sitemap.xml', () => {
   out.push({ page: '/reviews', priority: 0.5 });
   out.push({ page: '/sets', changefreq: 'daily', priority: 0.8 });
 
-  const lastItemSet = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
+  const lastItemSet = ItemSets.findOne({}, { sort: { generationDate: -1 }, limit: 1 });
   const id = lastItemSet._id.valueOf();
   const pages = lastItemSet.sets;
   out.push({
