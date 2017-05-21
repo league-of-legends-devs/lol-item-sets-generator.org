@@ -96,7 +96,7 @@ Template.Edit.onCreated(function () {
   const data = this.data || {};
   const build = data.build || {};
   const itemSet = build.itemSet || {};
-  const patch = PatchVersions.findOne({}, { sort: { patchVersion: -1 } });
+  const patch = PatchVersions.findOne({}, { sort: { importDate: -1 } });
   itemSet.patchVersion = patch.patchVersion;
   Session.set('itemSet', itemSet);
 });
