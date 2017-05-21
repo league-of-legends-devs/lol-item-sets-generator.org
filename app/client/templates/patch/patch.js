@@ -14,7 +14,7 @@ Template.Patch.helpers({
     // const lastItemSetGeneration = ItemSets.findOne();
     // const patch = lastItemSetGeneration ? lastItemSetGeneration.patchVersion : 'unknown';
     // return patch;
-    const lastPatch = PatchVersions.findOne({}, { sort: { patchVersion: -1 } });
+    const lastPatch = PatchVersions.findOne({}, { sort: { importDate: -1 } });
     const patch = lastPatch ? lastPatch.patchVersion : 'unknown';
     return patch;
   }
