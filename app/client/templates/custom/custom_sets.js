@@ -91,7 +91,7 @@ Template.CustomSets.onCreated(function () {
 });
 
 Template.CustomSets.onRendered(function () {
-  const lastPatch = PatchVersions.findOne({}, { sort: { patchVersion: -1 } });
+  const lastPatch = PatchVersions.findOne({}, { sort: { importDate: -1 } });
   CustomItemSetsIndex
     .getComponentMethods()
     .addProps('filter', { patchVersion: lastPatch.patchVersion });
