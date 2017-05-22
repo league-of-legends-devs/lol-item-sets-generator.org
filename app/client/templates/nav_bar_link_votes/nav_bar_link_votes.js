@@ -1,26 +1,26 @@
-import styles from './ribbon.mss';
+import styles from './nav_bar_link_votes.mss';
 
 /*****************************************************************************/
-/* Ribbon: Event Handlers */
+/* NavBarLinkVotes: Event Handlers */
 /*****************************************************************************/
-Template.Ribbon.events({
+Template.NavBarLinkVotes.events({
 });
 
 /*****************************************************************************/
-/* Ribbon: Helpers */
+/* NavBarLinkVotes: Helpers */
 /*****************************************************************************/
-Template.Ribbon.helpers({
+Template.NavBarLinkVotes.helpers({
   styles: styles
 });
 
 /*****************************************************************************/
-/* Ribbon: Lifecycle Hooks */
+/* NavBarLinkVotes: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Ribbon.onCreated(function () {
+Template.NavBarLinkVotes.onCreated(function () {
 });
 
-Template.Ribbon.onRendered(function () {
+Template.NavBarLinkVotes.onRendered(function () {
 });
 
-Template.Ribbon.onDestroyed(function () {
+Template.NavBarLinkVotes.onDestroyed(function () {
 });

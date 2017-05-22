@@ -44,7 +44,16 @@ Template.Build.helpers({
       });
     }
     rightLinks.push({
-      template: 'ButtonEditBuild',
+      template: 'NavbarLinkEditBuild',
+      data: {
+        buttonData: {
+          _param1: build.id,
+          _param2: build.number
+        }
+      }
+    });
+    rightLinks.push({
+      template: 'NavBarLinkVotes',
       data: {
       }
     });

@@ -20,7 +20,8 @@
       "source_map_support": true,
       "instances": 0,
       "exec_mode": "cluster",
-      "cron_restart": "*/15 * * * *"
+      "cron_restart": "*/15 * * * *",
+      "append_env_to_name": true
     }
 
   ]

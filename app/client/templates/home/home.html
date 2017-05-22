@@ -3,7 +3,10 @@
     <section class="{{styles.resume}} row">
       <div class="{{styles.description}} text-center col-md-8 col-sm-8">
         <h2>Download the best -generated- League of Legends recommended items.</h2>
-        <h4>The builds are generated every patch from Plat+ 5v5 ranked games (solo and team).</h4>
+        <h4>
+          The builds are generated every patch from Plat+ 5v5 ranked games (solo and team).
+          They also contain the best item sets created by the community !
+        </h4>
         <a id="guestbook" href="{{pathFor route='Guestbook'}}">Users reviews</a>
       </div>
       <div class="announcements col-md-4 col-sm-4 hidden-xs">
@@ -19,11 +22,22 @@
 
     <div class="clearfix"></div>
 
-    <section class="{{styles.browse_sets}} text-center text-uppercase">
-      <a href="{{pathFor route='Sets'}}">
-        <span>See the item sets</span>
-      </a>
+    <section class="{{styles.sets}} text-center row">
+      <div class="col-sm-12 text-uppercase">
+        <div class="{{styles.browse_sets}}">
+          <a href="{{pathFor route='Sets'}}" class="{{styles.sets_button}}">
+            <span>See the item sets</span>
+          </a>
+        </div>
+      </div>
+      <!--<div class="col-lg-4 col-md-4 col-sm-4">
+        <a href="{{pathFor route='CustomSets'}}" class="{{styles.sets_button}} btn btn-primary btn-success btn-lg">
+          Vote for the best custom builds
+        </a>
+      </div>-->
     </section>
+
+    <hr/>
 
     <section class="{{styles.download}} text-center row">
       <div class="{{styles.downloadSection}} col-md-4 col-sm-12">

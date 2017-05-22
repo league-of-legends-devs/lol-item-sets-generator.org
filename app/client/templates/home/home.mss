@@ -17,15 +17,26 @@
   margin: auto;
 }
 
-.browse_sets {
-  line-height: 50px;
-  height: 50px;
+.sets {
   margin-top: 18px;
+  height: 50px;
+  line-height: 50px;
   font-size: 2em;
-  border: 1px solid #E0E0E0;
-  background: url(img/sets_button.jpg);
+}
+
+.sets_button {
+  padding-left: 15px;
+  padding-right: 15px;
   width: 100%;
   height: 100%;
+}
+
+.browse_sets {
+  border: 1px solid #E0E0E0;
+  background: url(img/sets_button.jpg);
+  background-size: auto 100%;
+  height: 100%;
+  padding: 0;
 }
 
 .browse_sets a {
@@ -38,16 +49,16 @@
   height: 100%;
 }
 
-.browse_sets a:hover {
-  background-color: rgba(56, 56, 56, 0.5);
-}
-
 .browse_sets a span {
   background-color: rgba(56, 56, 56, 0.6);
   -webkit-box-shadow: 0px 0px 8px 5px rgba(56, 56, 56, 0.6);
   -moz-box-shadow: 0px 0px 8px 5px rgba(56, 56, 56, 0.6);
   box-shadow: 0px 0px 8px 5px rgba(56, 56, 56, 0.6);
   padding: 3px 8px;
+}
+
+.browse_sets a:hover {
+  background-color: rgba(56, 56, 56, 0.5);
 }
 
 .download {

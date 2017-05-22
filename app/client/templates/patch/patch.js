@@ -11,8 +11,11 @@ Template.Patch.events({
 /*****************************************************************************/
 Template.Patch.helpers({
   patch: () => {
-    const lastItemSetGeneration = ItemSets.findOne();
-    const patch = lastItemSetGeneration ? lastItemSetGeneration.patchVersion : 'unknown';
+    // const lastItemSetGeneration = ItemSets.findOne();
+    // const patch = lastItemSetGeneration ? lastItemSetGeneration.patchVersion : 'unknown';
+    // return patch;
+    const lastPatch = PatchVersions.findOne({}, { sort: { importDate: -1 } });
+    const patch = lastPatch ? lastPatch.patchVersion : 'unknown';
     return patch;
   }
 });
@@ -24,9 +27,10 @@ Template.Patch.onCreated(function () {
   var self = this;
   const subscriptions = new SubsManager();
   self.ready = new ReactiveVar();
-  self.autorun(function() {
-      var handle = subscriptions.subscribe('ItemSets.last');
-      self.ready.set(handle.ready());
+  self.autorun(function () {
+    // var handle = subscriptions.subscribe('ItemSets.last');
+    const handle = subscriptions.subscribe('PatchVersions.limit');
+    self.ready.set(handle.ready());
   });
 });
 

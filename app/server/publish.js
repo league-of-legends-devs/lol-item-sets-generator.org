@@ -5,7 +5,7 @@ Meteor.publish('ItemSets.id', function (id) {
 });
 Meteor.publish('ItemSets.last', function () {
   this.unblock();
-  return ItemSets.find({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 }, { reactive: false });
+  return ItemSets.find({}, { sort: { generationDate: -1 }, limit: 1 }, { reactive: false });
 });
 
 Meteor.publish('Downloads', function () {
@@ -26,4 +26,9 @@ Meteor.publish('GuestbookEntries', function () {
 Meteor.publish('TwitterAnnouncements.last', function () {
   this.unblock();
   return TwitterAnnouncements.find({}, { sort: { creationDate: -1 }, limit: 1 });
+});
+
+Meteor.publish('PatchVersions.limit', function () {
+  this.unblock();
+  return PatchVersions.find({}, { sort: { importDate: -1 }, limit: 10 }, { reactive: false });
 });

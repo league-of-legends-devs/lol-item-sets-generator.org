@@ -1,9 +1,7 @@
 /*****************************************************************************/
-/* ButtonEditBuild: Style */
+/* NavbarLinkEditBuild: Style */
 /*****************************************************************************/
-.button_edit_build {
-}
-
-.button_edit_build button {
-  width: 100%;
+.navbar_link_edit_build {
+padding-left: 2px;
+padding-right: 2px;
 }

@@ -1,5 +1,8 @@
 {
   "public": {
+    "analyticsSettings": {
+      "Google Analytics" : {"trackingId": ""}
+    },
     "facebook": {
       "appId": "909111165861047"
     }

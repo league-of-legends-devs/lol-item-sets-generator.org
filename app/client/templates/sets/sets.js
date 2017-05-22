@@ -13,25 +13,30 @@ Template.Sets.helpers({
   styles: styles,
   links: function () {
     let template = Template.instance();
-    const olderSetsLinks = [];
+    const leftLinks = [];
+    const rightLinks = [];
     if (this.itemSets.id) {
-      olderSetsLinks.push({
+      leftLinks.push({
         route: 'Sets',
         name: 'Latest item sets'
       });
     }
-    return {
-      left: [
-        ...olderSetsLinks
-      ],
-      right: [{
-        template: 'NavBarCreateAndSearchSets',
-        data: {
-          textChangeHandler: (text) => {
-            template.searchQuery.set(text);
-          }
+    rightLinks.push({
+      template: 'NavBarCreateAndSearchSets',
+      data: {
+        textChangeHandler: (text) => {
+          template.searchQuery.set(text);
         }
-      }]
+      }
+    });
+    rightLinks.push({
+      template: 'NavBarLinkVotes',
+      data: {
+      }
+    });
+    return {
+      left: leftLinks,
+      right: rightLinks
     };
   },
   searchQuery: () => {

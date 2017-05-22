@@ -55,7 +55,7 @@ Router.route('/', {
   controller: 'HomeController',
   where: 'client',
   data: function () {
-    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
+    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { generationDate: -1 }, limit: 1 });
     let patchVersion = lastItemSetGeneration ? (lastItemSetGeneration.patchVersion || 'unknown') : 'unknown';
     const downloadsSources = ['sets-from-website', 'windows-app-from-website', 'mac-app-from-website'];
     let downloads = {};
@@ -128,13 +128,29 @@ Router.route('/sets', {
   where: 'client',
   data: function () {
     let routeData = Session.get('routeData') || {};
-    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
+    const lastItemSetGeneration = ItemSets.findOne({}, { sort: { generationDate: -1 }, limit: 1 });
     routeData.itemSets = {
       id: this.params._id,
       sets: lastItemSetGeneration
     };
     Session.set('routeData', routeData);
     return routeData;
+  },
+  seo: {
+    title: function () {
+      return `Custom sets | ${title}`;
+    }
+  },
+  fastRender: true
+});
+Router.route('/sets/custom', {
+  layoutTemplate: 'MasterLayout',
+  name: 'CustomSets',
+  template: 'CustomSets',
+  controller: 'CustomSetsController',
+  where: 'client',
+  data: function () {
+    // CustomItemSets
   },
   seo: {
     title: function () {
@@ -166,9 +182,7 @@ Router.route('/sets/:_id', {
   },
   seo: {
     title: function () {
-      const routeData = Session.get('routeData') || {};
-      const itemSets = routeData ? routeData.itemSets : undefined;
-      const setsId = itemSets ? itemSets.id : 'error';
+      const setsId = this.params._id || 'error';
       return `Items sets #${setsId} | ${title}`;
     }
   },
@@ -191,7 +205,7 @@ Router.route('/sets/:_param1/:_param2', {
       const id = this.params._param1;
       const number = this.params._param2;
       const itemSets = ItemSets.findOne(new Meteor.Collection.ObjectID(id));
-      const latestItemSets = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 }, { reactive: false });
+      const latestItemSets = ItemSets.findOne({}, { sort: { generationDate: -1 }, limit: 1 }, { reactive: false });
       if (!itemSets) {
         this.render('Redirect');
         return;
@@ -212,7 +226,7 @@ Router.route('/sets/:_param1/:_param2', {
       // /champion/role
       const champion = this.params._param1.toLowerCase();
       const role = this.params._param2.toLowerCase();
-      const itemSets = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 }, { reactive: false });
+      const itemSets = ItemSets.findOne({}, { sort: { generationDate: -1 }, limit: 1 }, { reactive: false });
       if (!itemSets) {
         this.render('Redirect');
         return;
@@ -234,8 +248,7 @@ Router.route('/sets/:_param1/:_param2', {
   },
   seo: {
     title: function () {
-      const errorTitle = title;
-      const routeData = Session.get('routeData') || {};
+      const routeData = this.data() || {};
       const build = routeData.build;
       if (!build) {
         return errorTitle;
@@ -248,6 +261,76 @@ Router.route('/sets/:_param1/:_param2', {
   fastRender: true
 });
 
+Router.route('/edit', {
+  layoutTemplate: 'MasterLayout',
+  name: 'Edit',
+  template: 'Edit',
+  controller: 'EditController',
+  where: 'client',
+  seo: {
+    title: function () {
+      return `Item sets editor | ${title}`;
+    }
+  },
+  fastRender: true
+});
+Router.route('/edit/:_param1/:_param2', {
+  layoutTemplate: 'MasterLayout',
+  name: 'EditSet',
+  template: 'Edit',
+  controller: 'EditSetController',
+  where: 'client',
+  data: function () {
+    let routeData = Session.get('routeData') || {};
+
+    if (!this.params._param1 || !this.params._param2) {
+      this.render('Redirect');
+      return;
+    }
+
+    // /id/number
+    const id = this.params._param1;
+    const number = this.params._param2;
+    const itemSets = ItemSets.findOne(new Meteor.Collection.ObjectID(id));
+    const latestItemSets = ItemSets.findOne({}, { sort: { generationDate: -1 }, limit: 1 }, { reactive: false });
+    if (!itemSets) {
+      this.render('Redirect');
+      return;
+    }
+    const itemSet = itemSets.sets[number - 1];
+    if (!itemSet) {
+      this.render('Redirect');
+      return;
+    }
+    routeData.build = {
+      id: id,
+      number: number,
+      itemSets: itemSets,
+      itemSet: itemSet,
+      latestItemSetsId: latestItemSets._id
+    };
+
+    Session.set('routeData', routeData);
+    return routeData;
+  },
+  seo: {
+    title: function () {
+      const errorTitle = title;
+      const routeData = this.data() || {};
+      // TODO
+      // const build = routeData.build;
+      // if (!build) {
+      //   return errorTitle;
+      // }
+      // const itemSets = build.itemSets;
+      // const itemSet = build.itemSet;
+      // return `${itemSet.champion} - ${itemSet.role} (${itemSets.patchVersion}) #${build.id}/${build.number} | ${title}`;
+      return `Item sets editor | ${title}`;
+    }
+  },
+  fastRender: true
+});
+
 Router.route('/privacy', {
   name: 'Privacy',
   controller: 'PrivacyController',
@@ -255,7 +338,7 @@ Router.route('/privacy', {
 });
 
 Router.route('/api/patch', function () {
-  const lastItemSetGeneration = ItemSets.findOne({}, { sort: { patchVersion : -1, generationDate: -1 }, limit: 1 });
+  const lastItemSetGeneration = ItemSets.findOne({}, { sort: { generationDate: -1 }, limit: 1 });
   if (!lastItemSetGeneration) {
     this.response.end(JSON.stringify({ err: 'Unknown patch version' }));
   }
@@ -327,6 +410,13 @@ if (Meteor.isServer) {
     const link = version.link;
     this.response.writeHead(302, {
       'Location': link
+    });
+    this.response.end();
+  }, { where: 'server' });
+
+  Router.route('/tooltips/:_params', function () {
+    this.response.writeHead(302, {
+      'Location': `https://lol-item-sets-generator.org/tooltips/${this.params._params}`
     });
     this.response.end();
   }, { where: 'server' });

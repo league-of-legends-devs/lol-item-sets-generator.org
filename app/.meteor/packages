@@ -4,30 +4,36 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-base             # Packages every Meteor app needs to have
-mobile-experience       # Packages for a great mobile UX
-mongo                   # The database Meteor supports right now
-blaze-html-templates    # Compile .html files into Meteor Blaze views
-session                 # Client-side reactive dictionary for your app
-jquery                  # Helpful client-side library
-tracker                 # Meteor's client-side reactive programming library
+meteor-base                     # Packages every Meteor app needs to have
+mobile-experience               # Packages for a great mobile UX
+mongo                           # The database Meteor supports right now
+blaze-html-templates            # Compile .html files into Meteor Blaze views
+session                         # Client-side reactive dictionary for your app
+jquery                          # Helpful client-side library
+tracker                         # Meteor's client-side reactive programming library
 
-es5-shim                # ECMAScript 5 compatibility for older browsers.
-ecmascript              # Enable ECMAScript2015+ syntax in app code
+es5-shim                        # ECMAScript 5 compatibility for older browsers.
+ecmascript                      # Enable ECMAScript2015+ syntax in app code
+
+spiderable
 
 reactive-var
+
+#shell-server
 
 ## Client Libs
 meteorhacks:subs-manager
 twbs:bootstrap
 fourseven:scss
-nathantreid:css-modules
+nathantreid:css-modules@1.2.0
 momentjs:moment
 fortawesome:fontawesome
 aldeed:autoform
 erasaur:meteor-lodash
 joshowens:shareit
 mouse0270:bootstrap-notify
+barbatus:stars-rating
+rubaxa:sortable
 
 ## Server libs
 iron:router
@@ -37,6 +43,7 @@ meteorhacks:unblock
 aldeed:collection2
 dburles:collection-helpers
 jparker:crypto-md5
+audit-argument-checks
 
 ## Accounts
 accounts-ui
@@ -65,3 +72,7 @@ msavin:jetsetter
 ## SEO
 gadicohen:sitemaps
 lookback:seo
+
+easy:search
+easysearch:autosuggest
+sacha:spin

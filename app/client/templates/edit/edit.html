@@ -1,0 +1,113 @@
+<template name="Edit">
+  <div class="{{styles.edit}}">
+    <div>
+      {{> Nav links=links}}
+    </div>
+    <div>
+      <h1 class="{{styles.title}} text-center">Item sets editor</h1>
+      <div class="{{styles.content}}">
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <p><strong>NEW !</strong>
+            The players can create/edit their own item sets and vote for the best one.
+            The best item sets will be added to the generated ones and used by all the community !
+          </p>
+        </div>
+        {{#if currentUser}}
+          <div class="{{styles.editor}}">
+            <div class="clearfix">
+              <div class="{{styles.champion}} col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="{{styles.container}}">
+                  <div class="{{styles.champSelect}} clearfix">
+                    <div class="{{styles.champImage}} col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                      {{#if itemSet.champion}}
+                        <img src="{{championImage itemSet.patchVersion itemSet.champion}}" alt="{{itemSet.champion}}" class="league-tooltip img-responsive" data-champion="{{itemSet.champion}}">
+                      {{/if}}
+                    </div>
+                    <div class="{{styles.selectBox}} col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                      {{> EasySearch.Autosuggest index=championsIndex valueField='key' labelField='name' renderSuggestion="AutoSuggestChampion" attributes=attributes changeConfiguration=changeConfiguration}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="{{styles.filters}} col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <div class="{{styles.container}} clearfix">
+                  <div class="{{styles.sort}} col-lg-4 col-md-4 col-sm-4 col-sx-4">
+                    <p>Sort</p>
+                    <ul class="list-unstyled">
+                      <li>
+                        <label>
+                          <input type="radio" class="sort__sortAscending" name="sort" value="ascending" checked/>
+                          Ascending
+                        </label>
+                      </li>
+                      <li>
+                        <label>
+                          <input type="radio" class="sort__sortDescending" name="sort" value="descending" />
+                          Descending
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="{{styles.tags}} col-lg-8 col-md-8 col-sm-8 col-sx-8">
+                    <p>Tags</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="{{styles.rolesContainer}}">
+              <div class="{{styles.container}} text-center">
+                <ul class="{{styles.roles}}">
+                  {{#each role in roles}}
+                  <li class="{{styles.roleContainer}}">
+                    <label class="{{styles.role}}">
+                      <input type="radio" name="role" value="{{role}}" />
+                      {{role}}
+                    </label>
+                  </li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+            <div class="clearfix">
+              <div class="{{styles.itemSet}} col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                <div class="{{styles.container}}">
+                  <ul class="{{styles.itemSet_itemsList}}">
+                    {{#each block in itemSet.itemBlocks}}
+                    <li class="{{styles.itemSet_itemBlock}} clearfix">
+                      <input type="text" value="{{block.type}}" class="{{styles.itemSet_blockDescription}}" />
+                      <ul class="{{styles.itemSet_items}} sortable__item-set">
+                        {{#each item in block.items}}
+                        <li class="{{styles.itemSet_itemContainer}} {{styles__itemSet_item}}">
+                          <img src="{{itemImage '6.20.1' item.id}}" alt="Item {{item.id}}" class="{{styles.itemSet_item}} league-tooltip img-responsive" data-item="{{item.id}}">
+                        </li>
+                        {{/each}}
+                      </ul>
+                    </li>
+                    {{/each}}
+                  </ul>
+                </div>
+              </div>
+              <div class="{{styles.itemsList}} col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                <ul class="{{styles.itemsContainer}} sortable__items-list">
+                  {{#EasySearch.Each index=itemsIndex}}
+                  {{#let item=this}}
+                  <li class="{{styles.itemContainer}} {{styles__itemList_item}}">
+                    <img src="{{itemImage '6.20.1' item.id}}" alt="Item {{item.id}}" class="{{styles.itemsList_item}} league-tooltip img-responsive" data-item="{{item.id}}">
+                  </li>
+                  {{/let}}
+                  {{/EasySearch.Each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        {{else}}
+        <div>
+          <h2>(ノಠ益ಠ)ノ彡┻━┻</h2>
+          <h3>Please log in to create a new item set.</h3>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</template>

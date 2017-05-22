@@ -1,26 +1,26 @@
-import styles from './button_edit_build.mss';
+import styles from './pagination.mss';
 
 /*****************************************************************************/
-/* ButtonEditBuild: Event Handlers */
+/* Pagination: Event Handlers */
 /*****************************************************************************/
-Template.ButtonEditBuild.events({
+Template.Pagination.events({
 });
 
 /*****************************************************************************/
-/* ButtonEditBuild: Helpers */
+/* Pagination: Helpers */
 /*****************************************************************************/
-Template.ButtonEditBuild.helpers({
+Template.Pagination.helpers({
   styles: styles
 });
 
 /*****************************************************************************/
-/* ButtonEditBuild: Lifecycle Hooks */
+/* Pagination: Lifecycle Hooks */
 /*****************************************************************************/
-Template.ButtonEditBuild.onCreated(function () {
+Template.Pagination.onCreated(function () {
 });
 
-Template.ButtonEditBuild.onRendered(function () {
+Template.Pagination.onRendered(function () {
 });
 
-Template.ButtonEditBuild.onDestroyed(function () {
+Template.Pagination.onDestroyed(function () {
 });

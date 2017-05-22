@@ -68,7 +68,7 @@
   left: 0;
   top: 0;
   color: inherit;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   line-height: 20px;
   text-align: center;
