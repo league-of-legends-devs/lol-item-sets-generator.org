@@ -1,6 +1,7 @@
 # [LoL item sets generator](https://lol-item-sets-generator.org)
 
 [![Slack Status](https://slack.lol-item-sets-generator.org/badge.svg)](https://slack.lol-item-sets-generator.org/)
+[![Twitter Follow](https://img.shields.io/twitter/follow/LoL_item_sets.svg?style=social&label=Follow)](https://twitter.com/Unreal_IRCd)
 
 Download the best -generated- League of Legends recommended items.
 
