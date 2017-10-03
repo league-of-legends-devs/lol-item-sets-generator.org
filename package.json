@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ilshidur/lol-item-sets-generator.org.git"
+    "url": "https://github.com/league-of-legends-devs/lol-item-sets-generator.org.git"
   },
   "author": "Ilshidur <ilshidur@gmail.com> (https://www.nicolas-coutin.fr)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Ilshidur/lol-item-sets-generator.org/issues"
+    "url": "https://github.com/league-of-legends-devs/lol-item-sets-generator.org/issues"
   },
-  "homepage": "https://github.com/Ilshidur/lol-item-sets-generator.org",
+  "homepage": "https://github.com/league-of-legends-devs/lol-item-sets-generator.org",
   "cssModules": {
     "extensions": [
       "mss",
