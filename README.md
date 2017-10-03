@@ -24,7 +24,7 @@ Required :
 
 Steps :
 ```shell
-git clone https://github.com/Ilshidur/lol-item-sets-generator.org.git
+git clone https://github.com/league-of-legends-devs/lol-item-sets-generator.org.git
 npm start
 ```
 
