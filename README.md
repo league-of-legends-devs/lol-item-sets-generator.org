@@ -19,13 +19,21 @@
 ## Build
 
 Required :
-* [Node.js](https://nodejs.org) and [Meteor](https://www.meteor.com)
-* [iron-cli](https://github.com/iron-meteor/iron-cli)
+* Docker
 
 Steps :
 ```shell
 git clone https://github.com/league-of-legends-devs/lol-item-sets-generator.org.git
-npm start
+docker build --rm -t lol-item-sets-generator.org:latest .
+docker run # TODO
+# NODE_ENV
+# MONGO_URL
+# ITEM_SETS_ZIP_LOCATION
+# ROOT_URL
+# ADMIN_MAIL
+# KADIRA_APP_ID
+# KADIRA_APP_SECRET
+# PORT
 ```
 
 ## Backers

@@ -1,0 +1,9 @@
+*/node_modules/
+bin/
+.editorconfig
+.gitignore
+deploy.sh
+ecosystem*
+LICENSE
+preview.png
+README.md
