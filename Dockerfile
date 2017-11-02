@@ -7,8 +7,8 @@ RUN apt-get update && \
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo && echo "docker ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 USER docker
 
-RUN mkdir -p /home/docker/app
-WORKDIR /home/docker/app
+RUN mkdir -p /home/docker/src
+WORKDIR /home/docker/src
 
 RUN sudo apt-get -qq update && \
   sudo apt-get install -y --no-install-recommends curl bzip2 bsdtar build-essential python git wget
