@@ -19,7 +19,8 @@ RUN sudo apt-get install -y nodejs npm
 # fucking debian installs `node` as `nodejs`
 RUN sudo update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
 
-RUN curl https://install.meteor.com/ | sh
+RUN curl https://install.meteor.com/?release=1.3.2.4 | sh
+# Or 1.4.4.1
 
 COPY package.json .
 
