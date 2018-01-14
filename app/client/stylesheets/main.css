@@ -1,5 +1,0 @@
-/* See : https://github.com/mouse0270/bootstrap-notify/issues/144 */
-[data-notify="container"] {
-  -moz-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-}
