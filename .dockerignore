@@ -7,3 +7,6 @@ ecosystem*
 LICENSE
 preview.png
 README.md
+
+.dockerignore
+Dockerfile
