@@ -152,9 +152,3 @@ Router.route('SetsList', {
     Session.set('admin_subtitle', 'List all');
   }
 });
-AdminDashboard.addSidebarItem('Admin tools', {
-  icon: 'cog',
-  urls: [
-    { title: 'Kadira panel', url: 'https://ui.kadira.io/apps/gy3c99FqmsSEawXXZ/dashboard/overview' }
-  ]
-});

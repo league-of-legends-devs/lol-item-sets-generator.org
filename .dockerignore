@@ -7,6 +7,9 @@ ecosystem*
 LICENSE
 preview.png
 README.md
-
 .dockerignore
 Dockerfile
+/.idea
+/build
+*.log
+app/.meteor/local

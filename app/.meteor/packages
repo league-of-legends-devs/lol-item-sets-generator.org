@@ -62,8 +62,6 @@ standard-minifier-css
 standard-minifier-js
 
 ## Webmin & dev tools
-meteorhacks:kadira
-kadira:debug
 okgrow:analytics
 yogiben:admin
 msavin:mongol
