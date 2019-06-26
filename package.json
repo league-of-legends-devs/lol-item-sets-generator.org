@@ -38,5 +38,7 @@
       "sass"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "fibers": "^4.0.1"
+  }
 }
