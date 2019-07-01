@@ -1,5 +1,7 @@
 # FROM ubuntu:16.04
 FROM node:4.8.4-stretch
+# FROM node:7.5.0-slim
+# FROM node:latest
 
 RUN apt-get update && \
   apt-get -y install --no-install-recommends curl bzip2 bsdtar build-essential python git wget sudo
@@ -38,8 +40,9 @@ ENV METEOR_ALLOW_SUPERUSER true
 RUN mkdir -p ~/.meteor
 
 # RUN curl https://install.meteor.com/?release=1.3.2.4 | sh
+RUN curl https://install.meteor.com/?release=1.4.4.1 | sh
 # RUN curl https://install.meteor.com/?release=1.4.4.5 | sh
-RUN curl https://install.meteor.com/?release=1.8.0.2 | sh
+# RUN curl https://install.meteor.com/?release=1.8.0.2 | sh
 
 # RUN mkdir ~/.npm-global
 # RUN npm config set prefix '~/.npm-global'
@@ -68,7 +71,7 @@ RUN sudo chown -R node:node app
 # RUN ls -hali
 # RUN iron build
 # meteor build /~/lisg/src/~/lisg/src/build --directory
-RUN cd app && METEOR_SETTINGS=$(cat ../config/production/settings.json) /home/node/.meteor/meteor build ~/lisg/src/build --directory
+RUN cd app && METEOR_SETTINGS=$(cat ../config/production/settings.json) /home/node/.meteor/meteor build ~/lisg/src/build --directory --architecture os.linux.x86_64
 
 RUN (cd build/bundle/programs/server && npm install)
 # RUN (cd build/bundle/programs/server && npm uninstall fibers && npm install fibers)
